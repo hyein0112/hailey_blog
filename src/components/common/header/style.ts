@@ -6,7 +6,7 @@ export const Container = styled.nav`
   width: 100%;
   height: 60px;
   background: white;
-  border-bottom: 1px solid ${(props) => props.theme.colors.gray_400};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray_300};
 
   display: flex;
   align-items: center;
@@ -17,24 +17,33 @@ export const HeaderInnerBox = styled.div`
   width: 100%;
   height: 100%;
   max-width: 1400px;
-  background-color: ${(props) => props.theme.colors.gray_200};
   padding: 0 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
+export const RightBox = styled.div`
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 8px;
+`;
+
 export const InputBox = styled("form")<{ showSearchBar?: boolean }>`
   display: flex;
   width: fit-content;
+  height: 55%;
+  padding: 4px;
   justify-content: space-between;
   align-items: center;
-  border: ${(props) => (props.showSearchBar ? `1px solid ${props.theme.colors.gray_700}` : "none")};
+  border: ${({ theme, showSearchBar }) => (showSearchBar ? `1px solid ${theme.colors.gray_500}` : "none")};
+  transition: all 1s;
 `;
 
 export const SearchButton = styled.button`
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   margin: 0;
   display: flex;
@@ -47,6 +56,20 @@ export const Input = styled("input")<{ showSearchBar?: boolean }>`
   background: none;
   outline: none;
   width: 180px;
-  font-size: ${(props) => props.theme.fontSize.sm};
-  display: ${(props) => (props.showSearchBar ? "block" : "none")};
+  transition: all 1s;
+  font-size: ${({ theme }) => theme.fontSize.sm};
+  color: ${({ theme }) => theme.colors.black};
+  display: ${({ showSearchBar }) => (showSearchBar ? "block" : "none")};
+
+  @media screen and (max-width: 512px) {
+    width: 100px;
+  }
+`;
+
+export const ContactButton = styled.button`
+  display: block;
+
+  @media screen and (max-width: 512px) {
+    display: none;
+  }
 `;

@@ -52,6 +52,10 @@ const globalStyle = css`
     text-decoration: none;
     color: inherit;
   }
+
+  body:has(.modal-open) {
+    overflow: hidden;
+  }
 `;
 
 export default globalStyle;
