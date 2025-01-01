@@ -14,9 +14,10 @@ export const Container = styled("header")<{ showSearchBar: boolean }>`
   left: 0;
   right: 0;
   height: 70px;
-  background: ${({ theme }) => theme.colors.background2};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border2};
-  opacity: 0.95;
+  background: rgba(242, 242, 242, 0.75);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
 
   display: flex;
   align-items: center;
