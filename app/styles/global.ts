@@ -2,8 +2,12 @@ import { css } from "@emotion/react";
 
 const globalStyle = css`
   * {
+    padding: 0;
+    margin: 0;
+    font-family: var(--font-noto-sans-kr);
     box-sizing: border-box;
     font-size: 16px;
+    font-weight: 300;
   }
 
   html,
@@ -33,8 +37,9 @@ const globalStyle = css`
     vertical-align: baseline;
   }
 
+  html,
   body {
-    background-color: "#FFFFFF";
+    background-color: #f2f2f2;
   }
 
   ol,
@@ -43,6 +48,8 @@ const globalStyle = css`
   }
 
   button {
+    width: fit-content;
+    height: fit-content;
     border: 0;
     background: transparent;
     cursor: pointer;

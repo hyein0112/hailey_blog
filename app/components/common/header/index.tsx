@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+"use client";
 
+import React, { useState } from "react";
+import Link from "next/link";
+
+import { SideMenu } from "@/components";
 import theme from "@/styles/theme";
-import SideMenu from "@/components/sideMenu";
 import * as S from "./style";
 
 import { MdSearch, MdOutlineMailOutline } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoLogoGithub } from "react-icons/io";
 
-export default function Header() {
+export default function Header({ isDetail }: { isDetail: boolean }) {
   const [showSearchBar, setShowSearchBar] = useState(false);
   const [showSideMenu, setShowSideMenu] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -23,9 +26,9 @@ export default function Header() {
   return (
     <>
       <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)} />
-      <S.Container>
+      <S.Container className={isDetail ? "detail" : ""}>
         <S.HeaderInnerBox>
-          <div>Hailey&apos;s Blog</div>
+          <S.Logo>Hailey&apos;s Blog</S.Logo>
           <S.RightBox>
             <S.InputBox onSubmit={handleSubmit} showSearchBar={showSearchBar}>
               <S.Input
@@ -44,18 +47,22 @@ export default function Header() {
                   }, 200);
                 }}
               >
-                <MdSearch size={24} color={theme.colors.gray_800} />
+                <MdSearch size={24} color={theme.colors.border4} />
               </S.SearchButton>
             </S.InputBox>
-            <S.ContactButton>
-              <IoLogoGithub size={24} color={theme.colors.gray_800} />
-            </S.ContactButton>
-            <S.ContactButton>
-              <MdOutlineMailOutline size={24} color={theme.colors.gray_800} />
-            </S.ContactButton>
-            <button onClick={() => setShowSideMenu(true)}>
-              <RxHamburgerMenu size={24} color={theme.colors.gray_800} />
-            </button>
+            <Link href={"https://github.com/hyein0112"} about="github" target="_blank">
+              <S.ContactButton>
+                <IoLogoGithub size={24} color={theme.colors.border4} />
+              </S.ContactButton>
+            </Link>
+            <Link href={"mailto:dev.hyein@icloud.com"}>
+              <S.ContactButton>
+                <MdOutlineMailOutline size={24} color={theme.colors.border4} />
+              </S.ContactButton>
+            </Link>
+            <S.Button onClick={() => setShowSideMenu(true)}>
+              <RxHamburgerMenu size={24} color={theme.colors.border4} />
+            </S.Button>
           </S.RightBox>
         </S.HeaderInnerBox>
       </S.Container>

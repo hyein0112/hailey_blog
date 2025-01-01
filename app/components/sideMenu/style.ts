@@ -7,7 +7,7 @@ export const SideMenuWrapper = styled("div")<{ isOpen?: boolean }>`
   right: 0;
   bottom: 0;
 
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 100;
   display: flex;
   justify-content: flex-end;
@@ -20,7 +20,7 @@ export const SideMenuWrapper = styled("div")<{ isOpen?: boolean }>`
 export const SideMenuContent = styled.div`
   width: 340px;
   height: 100%;
-  background: ${({ theme }) => theme.colors.gray_50};
+  background: ${({ theme }) => theme.colors.background2};
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   overflow-y: auto;
