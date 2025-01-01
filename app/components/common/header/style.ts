@@ -7,7 +7,7 @@ export const Button = styled.button`
   padding: 4px;
 `;
 
-export const Container = styled.header`
+export const Container = styled("header")<{ showSearchBar: boolean }>`
   z-index: 10;
   position: sticky;
   top: 0;
@@ -22,6 +22,10 @@ export const Container = styled.header`
   align-items: center;
   justify-content: center;
 
+  transition: height 0.3s;
+
+  ${({ showSearchBar }) => showSearchBar && "height: 140px;"}
+
   &.detail {
     position: static;
     width: 100%;
@@ -29,6 +33,8 @@ export const Container = styled.header`
 `;
 
 export const HeaderInnerBox = styled.div`
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 70px;
   max-width: 1200px;
@@ -49,42 +55,56 @@ export const RightBox = styled.div`
   height: 100%;
   align-items: center;
   gap: 8px;
+
+  @media screen and (max-width: 512px) {
+    gap: 4px;
+  }
 `;
 
 export const InputBox = styled("form")<{ showSearchBar?: boolean }>`
+  position: absolute;
+  top: 70px;
   display: flex;
-  width: fit-content;
-  height: 55%;
-  padding: 0;
-  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  height: 0;
+  padding: 0 24px;
+  justify-content: center;
   align-items: center;
-  border: none;
-  transition: all 0.5s;
+  transition: all 0.3s;
 
-  ${({ theme, showSearchBar }) => showSearchBar && `border: 1px solid ${theme.colors.border3}; padding: 4px`};
+  ${({ showSearchBar }) => showSearchBar && "height: 50px;"};
 `;
 
 export const SearchButton = styled.button`
-  padding-top: 2px;
+  padding-top: 2px -1px 0 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+export const SearchBox = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 8px;
+  gap: 8px;
+  height: 100%;
+  border-radius: 10px;
+  border: ${({ theme }) => `1px solid ${theme.colors.border3}`};
+`;
+
 export const Input = styled("input")<{ showSearchBar?: boolean }>`
   border: none;
   background: none;
   outline: none;
-  width: 0;
+  width: 100%;
   transition: all 0.5s;
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.base};
   color: ${({ theme }) => theme.colors.black};
-  ${({ showSearchBar }) => showSearchBar && "width: 180px"};
-
-  @media screen and (max-width: 512px) {
-    width: 100px;
-  }
+  /* ${({ showSearchBar }) => showSearchBar && "width: 140px"}; */
 `;
 
 export const ContactButton = styled(Button)`
