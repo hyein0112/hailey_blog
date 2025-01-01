@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import dayjs from "dayjs";
+
 import * as S from "./style";
 import { PostData } from "@/types/post";
 
@@ -15,7 +17,7 @@ export default function PostBox({ post }: { post: PostData }) {
           </S.TitleAndContentBox>
           <S.TagAndDateBox>
             <S.Tag>{post.tag}</S.Tag>
-            <S.Date>{post.createdAt}</S.Date>
+            <S.Date>{dayjs(post.createdAt).format("YYYY년 MM월 DD일")}</S.Date>
           </S.TagAndDateBox>
         </S.TextBox>
         <S.ImageBox>

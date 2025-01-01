@@ -61,8 +61,10 @@ export const Date = styled.span`
 `;
 
 export const ImageBox = styled.div`
+  height: 100%;
   & > img {
     border-radius: 8px;
     object-fit: cover;
+    height: 100%;
   }
 `;
