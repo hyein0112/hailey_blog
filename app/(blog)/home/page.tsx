@@ -8,7 +8,7 @@ import { Header, Divider } from "@/components/common";
 import { PostBox } from "@/components";
 import * as S from "./style";
 
-export default function Home() {
+export default function HomePage() {
   const [tapMenu, setTapMenu] = useState("all");
 
   useEffect(() => {

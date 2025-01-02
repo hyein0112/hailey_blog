@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import { Header } from "@/components/common";
 import * as S from "./style";
 
-export default function PostDetail() {
+export default function PostDetailPage() {
   const { id } = useParams<{ id: string }>();
   return (
     <S.Container>
