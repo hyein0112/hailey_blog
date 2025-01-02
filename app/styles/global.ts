@@ -4,7 +4,6 @@ const globalStyle = css`
   * {
     padding: 0;
     margin: 0;
-    font-family: var(--font-noto-sans-kr);
     box-sizing: border-box;
     font-size: 16px;
     font-weight: 300;
@@ -40,6 +39,7 @@ const globalStyle = css`
   html,
   body {
     background-color: #f2f2f2;
+    font-family: var(--font-noto-sans-kr);
   }
 
   ol,
