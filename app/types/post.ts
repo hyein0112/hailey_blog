@@ -1,10 +1,10 @@
 export type PostData = {
-  seq: number;
+  seq?: number;
   title: string;
   content: string;
-  thumbnail: string;
+  thumbnail?: string;
   tag: string;
-  createdAt: string;
+  createdAt?: string;
 };
 
 export type PostList = {
