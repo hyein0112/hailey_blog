@@ -21,7 +21,7 @@ export default function PostBox({ post }: { post: PostData }) {
           </S.TagAndDateBox>
         </S.TextBox>
         <S.ImageBox>
-          <Image width={240} height={160} alt={`${post.title}의 배너 이미지`} src={post.thumbnail} />
+          <Image width={240} height={160} alt={`${post.title}의 배너 이미지`} src={post.thumbnail || ""} />
         </S.ImageBox>
       </S.PostBox>
     </Link>

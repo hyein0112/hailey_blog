@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const PostBox = styled.div`
   height: 220px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   background: ${({ theme }) => theme.colors.background3};
   padding: 20px;

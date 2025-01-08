@@ -2,17 +2,28 @@
 
 import { useEffect, useState } from "react";
 
-import { BlogList } from "@/public/dummy/blogList";
-
 import { Header, Divider } from "@/components/common";
 import { PostBox } from "@/components";
 import * as S from "./style";
+import axios from "axios";
+import { PostList } from "@/types/post";
 
 export default function HomePage() {
   const [tapMenu, setTapMenu] = useState("all");
+  const [blogList, setBlogList] = useState<PostList>();
+
+  const getPostList = async () => {
+    try {
+      const postsList = await axios.get("api/posts");
+      setBlogList(postsList);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     console.log("post 게시글 리스트", tapMenu);
+    getPostList();
   }, [tapMenu]);
   return (
     <S.Container>
@@ -31,8 +42,8 @@ export default function HomePage() {
         </S.MenuTapBox>
         <Divider margin="0 0 8px 0" />
         <S.PostContainer>
-          {BlogList.data.map((post) => (
-            <PostBox key={post.seq} post={post} />
+          {blogList?.data.map((post) => (
+            <PostBox key={post._id} post={post} />
           ))}
         </S.PostContainer>
       </S.ContentBox>
