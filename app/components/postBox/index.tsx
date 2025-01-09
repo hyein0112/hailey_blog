@@ -19,7 +19,7 @@ export default function PostBox({ post }: { post: PostData }) {
           </S.TitleAndContentBox>
           <S.TagAndDateBox>
             <S.Tag>{post.tag}</S.Tag>
-            <S.Date>{dayjs(post.createdAt).format("YYYY년 MM월 DD일")}</S.Date>
+            <S.Date>{dayjs.tz(post.createdAt).format("YYYY년 MM월 DD일")}</S.Date>
           </S.TagAndDateBox>
         </S.TextBox>
         <S.ImageBox>

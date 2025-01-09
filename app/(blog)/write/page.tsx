@@ -23,7 +23,7 @@ export default function WritePage() {
         tag: postData?.tag,
         content: postData?.content,
         thumbnail: postData?.thumbnail,
-        createdAt: dayjs(),
+        createdAt: dayjs.tz().format("YYYY-MM-DD hh:mm:ss"),
       });
       console.log(data);
     } catch (e) {
