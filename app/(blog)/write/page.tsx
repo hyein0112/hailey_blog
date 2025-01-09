@@ -7,14 +7,28 @@ import * as S from "./style";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import usePost from "@/stores/usePost";
+import axios from "axios";
+import dayjs from "@/lib/dayjs";
 
 export default function WritePage() {
   const router = useRouter();
   const [isWriter, setIsWriter] = useState(false);
   const { postData } = usePost();
 
-  const handleClickPost = () => {
+  const handleClickPost = async () => {
     console.log(postData);
+    try {
+      const data = await axios.post("/api/write", {
+        title: postData?.title,
+        tag: postData?.tag,
+        content: postData?.content,
+        thumbnail: postData?.thumbnail,
+        createdAt: dayjs(),
+      });
+      console.log(data);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   useEffect(() => {

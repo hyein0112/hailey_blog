@@ -18,12 +18,14 @@ export default function Editor() {
       setValue(`---
 title: ${postData.title}
 tag:  ${postData.tag}
+thumbnail: ${postData.thumbnail}   
 ---
 ${postData.content}`);
     } else {
       setValue(`---
 title: 게시글 제목
 tag: front | back
+thumbnail: 링크   
 ---
 게시글 본문`);
     }
@@ -35,6 +37,7 @@ tag: front | back
       setPostData({
         title: data.title,
         tag: data.tag,
+        thumbnail: data.thumbnail,
         content,
       });
     }

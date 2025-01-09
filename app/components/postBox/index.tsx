@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import dayjs from "dayjs";
+import dayjs from "@/lib/dayjs";
 
 import * as S from "./style";
 import { PostData } from "@/types/post";
