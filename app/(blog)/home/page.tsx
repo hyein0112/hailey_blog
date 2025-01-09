@@ -12,19 +12,24 @@ export default function HomePage() {
   const [tapMenu, setTapMenu] = useState("all");
   const [blogList, setBlogList] = useState<PostList>();
 
+  useEffect(() => {
+    getPostList();
+  }, [tapMenu]);
+
   const getPostList = async () => {
     try {
-      const postsList = await axios.get("api/posts");
-      setBlogList(postsList);
+      const postsList = await axios.get("api/posts", {
+        params: {
+          page: 1,
+          search: tapMenu,
+        },
+      });
+      setBlogList(postsList.data);
     } catch (e) {
       console.log(e);
     }
   };
 
-  useEffect(() => {
-    console.log("post 게시글 리스트", tapMenu);
-    getPostList();
-  }, [tapMenu]);
   return (
     <S.Container>
       <Header isDetail={false} />
