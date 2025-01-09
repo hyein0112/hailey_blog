@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const PostBox = styled.div`
-  max-height: 480px;
+  max-height: 420px;
   height: 220px;
   display: flex;
   justify-content: space-between;
@@ -18,7 +18,12 @@ export const PostBox = styled.div`
     flex-direction: column-reverse;
     gap: 8px;
     padding: 8px;
-    height: 110vw;
+    height: 95vw;
+  }
+
+  @media screen and (max-width: 385px) {
+    max-height: 370px;
+    height: 105vw;
   }
 `;
 
@@ -90,8 +95,6 @@ export const Date = styled.span`
 
 export const ImageBox = styled.div`
   width: 230px;
-  aspect-ratio: 7 / 5;
-  background: pink;
   display: flex;
 
   & > img {
@@ -99,10 +102,10 @@ export const ImageBox = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+    aspect-ratio: 8 / 5;
   }
 
   @media screen and (max-width: 500px) {
     width: 100%;
-    aspect-ratio: 7 / 5;
   }
 `;
