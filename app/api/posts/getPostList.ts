@@ -10,9 +10,9 @@ export default async function getPostList(page: number, search: string) {
       db
         .collection("posts")
         .find(filter)
+        .sort({ createdAt: -1 })
         .skip((page - 1) * pageSize)
         .limit(pageSize)
-        .sort({ createdAt: -1 })
         .toArray(),
       db.collection("posts").countDocuments(filter),
     ]);
