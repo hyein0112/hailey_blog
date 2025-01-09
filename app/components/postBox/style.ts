@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const PostBox = styled.div`
+  max-height: 480px;
   height: 220px;
   display: flex;
   justify-content: space-between;
@@ -8,30 +9,52 @@ export const PostBox = styled.div`
   background: ${({ theme }) => theme.colors.background3};
   padding: 20px;
   border-radius: 16px;
-  transition: all 0.2s;
 
   &:hover {
     transform: scale(1.02);
   }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column-reverse;
+    gap: 8px;
+    padding: 8px;
+    height: 110vw;
+  }
 `;
 
 export const TextBox = styled.div`
+  width: calc(100% - 230px);
   height: 100%;
-  padding: 8px 40px 8px 8px;
+  padding: 8px 16px 8px 8px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    padding: 4px;
+  }
 `;
 
 export const TitleAndContentBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media screen and (max-width: 500px) {
+    gap: 4px;
+  }
 `;
 
 export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.lg};
+  font-size: ${({ theme }) => theme.fontSize.md};
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const PostContent = styled.span`
@@ -42,6 +65,10 @@ export const PostContent = styled.span`
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  @media screen and (max-width: 500px) {
+    -webkit-line-clamp: 2;
+  }
 `;
 
 export const TagAndDateBox = styled.div`
@@ -62,10 +89,20 @@ export const Date = styled.span`
 `;
 
 export const ImageBox = styled.div`
-  height: 100%;
+  width: 230px;
+  aspect-ratio: 7 / 5;
+  background: pink;
+  display: flex;
+
   & > img {
-    border-radius: 8px;
-    object-fit: cover;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    aspect-ratio: 7 / 5;
   }
 `;
