@@ -32,7 +32,6 @@ tag: front | back
   useEffect(() => {
     if (value.length > 0) {
       const { data, content } = matter(value);
-      // console.log(data, content);
       setPostData({
         title: data.title,
         tag: data.tag,
@@ -41,7 +40,8 @@ tag: front | back
     }
   }, [value]);
 
-  const compressImage = async (file: File): Promise<File> => {
+  // 이미지 압축
+  const compressImage = async (file: File) => {
     const options = {
       maxSizeMB: 1,
       maxWidthOrHeight: 1920,
@@ -49,30 +49,32 @@ tag: front | back
     };
 
     try {
-      return await imageCompression(file, options);
+      const compressedBlob = await imageCompression(file, options);
+      return new File([compressedBlob], file.name, { type: compressedBlob.type });
     } catch (error) {
       console.error("이미지 압축 실패:", error);
       return file;
     }
   };
 
-  const uploadImage = async (file: File): Promise<string | null> => {
+  // 이미지 업로드
+  const uploadImage = async (file: File) => {
     const formData = new FormData();
     formData.append("image", file);
 
     try {
-      const response = await fetch("http://your-backend-url/upload", {
+      const response = await fetch("/api/file/upload", {
         method: "POST",
         body: formData,
       });
       const data = await response.json();
-      return data.imageUrl;
+      return data.url;
     } catch (error) {
       console.error("이미지 업로드 실패:", error);
-      return null;
     }
   };
 
+  // 이미지 업로드 custom 버튼
   const imageUploadCommand: ICommand = {
     name: "image",
     keyCommand: "image",
@@ -88,7 +90,7 @@ tag: front | back
           const compressedFile = await compressImage(file);
           const imageUrl = await uploadImage(compressedFile);
           if (imageUrl) {
-            const imageMarkdown = `![](${imageUrl})`;
+            const imageMarkdown = `![image](${imageUrl})`;
             api.replaceSelection(imageMarkdown);
           }
         }
