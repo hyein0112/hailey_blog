@@ -25,13 +25,27 @@ export const EditorContainer = styled.div`
     align-items: center;
     padding: 0 8px !important;
   }
+
   .w-md-editor-text {
     height: 100%;
+    padding: 7px;
+    & div,
+    & pre {
+      height: 100%;
+
+      & span {
+        font-size: medium;
+      }
+    }
   }
+
   .w-md-editor-text-input {
+    position: absolute;
     font-size: medium;
     line-height: 19px;
-    height: 100%;
+    height: 5000px;
+    overflow: visible;
+    padding-bottom: 0;
   }
   .w-md-editor-bar {
     display: none;
