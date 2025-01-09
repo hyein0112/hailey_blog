@@ -5,9 +5,11 @@ import React, { useEffect, useState } from "react";
 
 import * as S from "./style";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import usePost from "@/stores/usePost";
 
 export default function WritePage() {
+  const router = useRouter();
   const [isWriter, setIsWriter] = useState(false);
   const { postData } = usePost();
 
@@ -19,11 +21,12 @@ export default function WritePage() {
     const writer = prompt("너 누구야");
 
     if (writer) {
-      setIsWriter(true);
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      writer === process.env.NEXT_PUBLIC_USER_KEY ? setIsWriter(true) : router.back();
     } else {
       alert("bye");
     }
-  }, []);
+  }, [router]);
 
   return (
     isWriter && (
