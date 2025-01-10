@@ -10,7 +10,7 @@ import { PostData } from "@/types/post";
 
 export default function PostBox({ post }: { post: PostData }) {
   return (
-    <Link href={`posts/${post.title}`}>
+    <Link href={`posts/${post._id}`}>
       <S.PostBox>
         <S.TextBox>
           <S.TitleAndContentBox>

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import db from "../util/database";
+import { ObjectId } from "mongodb";
 
-export default async function getPostList(page: number, search: string) {
+export async function getPostList(page: number, search: string) {
   try {
     const pageSize = 10;
     const filter = search === "all" ? {} : { tag: { $regex: search } };
@@ -30,5 +31,15 @@ export default async function getPostList(page: number, search: string) {
   } catch (e) {
     console.error(e);
     return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
+  }
+}
+
+export async function getPostOne(id: string) {
+  try {
+    const item = await db.collection("posts").findOne({ _id: new ObjectId(id) });
+    if (!item) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
+    return NextResponse.json(item);
+  } catch (e) {
+    console.error(e);
   }
 }

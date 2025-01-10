@@ -5,8 +5,6 @@ const globalStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 16px;
-    font-weight: 300;
   }
 
   html,
@@ -40,6 +38,8 @@ const globalStyle = css`
   body {
     background-color: #f2f2f2;
     font-family: var(--font-noto-sans-kr);
+    font-size: 16px;
+    font-weight: 300;
   }
 
   ol,

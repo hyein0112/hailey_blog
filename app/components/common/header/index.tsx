@@ -38,8 +38,7 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
                   setTimeout(() => {
                     document.getElementById("search-input")?.focus();
                   }, 200);
-                }}
-              >
+                }}>
                 <MdSearch size={24} color={theme.colors.border4} />
               </S.SearchButton>
               <Link href={"https://github.com/hyein0112"} about="github" target="_blank">

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import getPostList from "./getPostList";
+import { getPostList } from "./getPostList";
 
 export async function GET(request: NextRequest) {
   try {

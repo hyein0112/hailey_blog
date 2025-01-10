@@ -28,7 +28,9 @@ export const Container = styled("header")<{ showSearchBar: boolean }>`
   ${({ showSearchBar }) => showSearchBar && "height: 140px;"}
 
   &.detail {
-    position: static;
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
   }
 `;
