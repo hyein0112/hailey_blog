@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPostOne } from "../getPostList";
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const { id } = params;
+    const { id } = await params;
 
     if (!id) return NextResponse.json({ error: "올바른 요청이 아닙니다." }, { status: 400 });
 
