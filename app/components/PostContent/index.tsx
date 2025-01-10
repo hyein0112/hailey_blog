@@ -8,6 +8,7 @@ import { PostData } from "@/types/post";
 import * as S from "./style";
 import { Divider } from "../common";
 import dayjs from "@/lib/dayjs";
+import tagConverter from "@/lib/tagConverter";
 
 hljs.configure({
   languages: ["javascript", "python", "html", "css"],
@@ -47,7 +48,7 @@ export default function PostContent({ content }: { content: PostData }) {
   return (
     <S.Container>
       <S.TagAndDate>
-        <span>{content.tag}</span>
+        <span>{tagConverter(content.tag)}</span>
         <span>{dayjs.tz(content.createdAt).format("YYYY-MM-DD A hh:mm")}</span>
       </S.TagAndDate>
       <h1>{content.title}</h1>

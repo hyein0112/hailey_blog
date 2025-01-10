@@ -43,3 +43,16 @@ export async function getPostOne(id: string) {
     console.error(e);
   }
 }
+
+export async function getPostTagCount() {
+  try {
+    const [all, front, back] = await Promise.all([
+      db.collection("posts").countDocuments(),
+      db.collection("posts").countDocuments({ tag: "front" }),
+      db.collection("posts").countDocuments({ tag: "back" }),
+    ]);
+    return NextResponse.json({ all, front, back });
+  } catch (e) {
+    console.error(e);
+  }
+}

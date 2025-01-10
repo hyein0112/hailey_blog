@@ -7,6 +7,7 @@ import dayjs from "@/lib/dayjs";
 
 import * as S from "./style";
 import { PostData } from "@/types/post";
+import tagConverter from "@/lib/tagConverter";
 
 export default function PostBox({ post }: { post: PostData }) {
   return (
@@ -18,7 +19,7 @@ export default function PostBox({ post }: { post: PostData }) {
             <S.PostContent>{removeMd(post.content)}</S.PostContent>
           </S.TitleAndContentBox>
           <S.TagAndDateBox>
-            <S.Tag>{post.tag}</S.Tag>
+            <S.Tag>{tagConverter(post.tag)}</S.Tag>
             <S.Date>{dayjs.tz(post.createdAt).format("YYYY년 MM월 DD일")}</S.Date>
           </S.TagAndDateBox>
         </S.TextBox>
