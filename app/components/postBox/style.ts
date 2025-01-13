@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
 export const PostBox = styled.div`
-  max-height: 420px;
-  height: 220px;
+  max-height: 400px;
+  height: 210px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +18,7 @@ export const PostBox = styled.div`
     flex-direction: column-reverse;
     gap: 8px;
     padding: 8px;
-    height: 95vw;
+    height: 92vw;
   }
 
   @media screen and (max-width: 385px) {
@@ -45,7 +45,7 @@ export const TextBox = styled.div`
 export const TitleAndContentBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 
   @media screen and (max-width: 500px) {
     gap: 4px;
@@ -53,7 +53,7 @@ export const TitleAndContentBox = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: ${({ theme }) => theme.fontSize.md};
+  font-size: ${({ theme }) => theme.fontSize.base};
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +63,7 @@ export const Title = styled.h2`
 `;
 
 export const PostContent = styled.span`
-  font-size: 1rem;
+  font-size: ${({ theme }) => theme.fontSize.sm};
   line-height: 1.6;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -84,13 +84,14 @@ export const TagAndDateBox = styled.div`
 
 export const Tag = styled.span`
   font-weight: 600;
-  font-size: ${({ theme }) => theme.fontSize.base};
+  font-size: ${({ theme }) => theme.fontSize.sm};
   color: ${({ theme }) => theme.colors.green600};
 `;
 
 export const Date = styled.span`
   color: ${({ theme }) => theme.colors.text1};
-  font-size: ${({ theme }) => theme.fontSize.sm};
+  font-size: ${({ theme }) => theme.fontSize.xs};
+  padding-bottom: 1px;
 `;
 
 export const ImageBox = styled.div`
