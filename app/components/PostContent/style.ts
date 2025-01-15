@@ -38,8 +38,9 @@ export const ContentBox = styled.div`
   pre {
     width: 100%;
     background-color: ${({ theme }) => theme.colors.background3};
-    padding: 8px;
+    padding: 16px;
     margin: 4px 0;
+    font-size: ${({ theme }) => theme.fontSize.sm};
     line-height: ${({ theme }) => theme.fontSize.lg};
     overflow-x: auto;
   }
