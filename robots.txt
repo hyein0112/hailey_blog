@@ -1,0 +1,9 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin pages
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://hailey-blog.vercel.app/sitemap.xml
