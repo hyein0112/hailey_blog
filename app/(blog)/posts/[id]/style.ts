@@ -6,11 +6,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   background: ${({ theme }) => theme.colors.background2};
-  overflow-y: scroll;
 `;
 
 export const Main = styled.main`
-  padding: 70px 16px 40px 16px;
+  padding: 40px 16px;
   display: flex;
   flex-direction: column;
   max-width: 1000px;

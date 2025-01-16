@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 import { markedHighlight } from "marked-highlight";
@@ -49,7 +51,7 @@ export default function PostContent({ content }: { content: PostData }) {
     <S.Container>
       <S.TagAndDate>
         <span>{tagConverter(content.tag)}</span>
-        <span>{dayjs.tz(content.createdAt).format("YYYY-MM-DD A hh:mm")}</span>
+        <span>{dayjs.tz(content.createdAt).format("YYYY년 MM월 DD일")}</span>
       </S.TagAndDate>
       <h1>{content.title}</h1>
       <Divider height="2px" margin="8px 0" />

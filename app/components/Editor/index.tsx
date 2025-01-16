@@ -24,7 +24,7 @@ ${postData.content}`);
     } else {
       setValue(`---
 title: 게시글 제목
-tag: front | back
+tag: front
 thumbnail: 링크   
 ---
 게시글 본문`);

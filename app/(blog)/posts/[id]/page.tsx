@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
-import { Header, Giscus } from "@/components/common";
+import { Header, Giscus, ProgressBar } from "@/components/common";
 import * as S from "./style";
 import axios from "axios";
 import { PostContent } from "@/components";
@@ -26,6 +26,7 @@ export default function PostDetailPage() {
     content && (
       <S.Container>
         <Header isDetail={true} />
+        <ProgressBar />
         <S.Main>
           <PostContent content={content} />
           <Giscus />

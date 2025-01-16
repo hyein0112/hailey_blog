@@ -12,6 +12,6 @@ export type PostList = {
   pageSize: number;
   totalPage: number;
   totalElement: number;
-  search: string;
+  searchTag: string;
   data: PostData[];
 };
