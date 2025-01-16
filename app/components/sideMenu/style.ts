@@ -7,19 +7,24 @@ export const SideMenuWrapper = styled("div")<{ isOpen?: boolean }>`
   right: 0;
   bottom: 0;
 
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
   display: flex;
   justify-content: flex-end;
 
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
-  transition: opacity 0.1s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
 `;
 
 export const SideMenuContent = styled.div`
-  width: 340px;
+  width: 80%;
   height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  gap: 24px;
   background: ${({ theme }) => theme.colors.background2};
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -32,7 +37,30 @@ export const SideMenuContent = styled.div`
     transform: translateX(0);
   }
 
-  @media screen and (max-width: 512px) {
-    width: 100%;
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
+`;
+
+export const CloseButton = styled.button`
+  align-self: flex-start;
+  padding-left: 16px;
+`;
+
+export const MenuBox = styled.ul`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+`;
+
+export const Menu = styled.li`
+  padding: 16px 24px;
+  color: ${({ theme }) => theme.colors.text3};
+  font-weight: 400;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 600;
   }
 `;
