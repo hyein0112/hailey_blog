@@ -2,10 +2,10 @@ import { NextResponse } from "next/server";
 import db from "../util/database";
 import { ObjectId } from "mongodb";
 
-export async function getPostList(page: number, search: string) {
+export async function getPostList(page: number, searchTag: string) {
   try {
     const pageSize = 10;
-    const filter = search === "all" ? {} : { tag: { $regex: search } };
+    const filter = searchTag === "all" ? {} : { tag: { $regex: searchTag } };
 
     const [items, totalElement] = await Promise.all([
       db
@@ -23,7 +23,7 @@ export async function getPostList(page: number, search: string) {
       pageSize,
       totalPage: Math.ceil(totalElement / pageSize),
       totalElement,
-      search,
+      searchTag,
       data: items,
     };
 
@@ -39,19 +39,6 @@ export async function getPostOne(id: string) {
     const item = await db.collection("posts").findOne({ _id: new ObjectId(id) });
     if (!item) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
     return NextResponse.json(item);
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-export async function getPostTagCount() {
-  try {
-    const [all, front, back] = await Promise.all([
-      db.collection("posts").countDocuments(),
-      db.collection("posts").countDocuments({ tag: "front" }),
-      db.collection("posts").countDocuments({ tag: "back" }),
-    ]);
-    return NextResponse.json({ all, front, back });
   } catch (e) {
     console.error(e);
   }
