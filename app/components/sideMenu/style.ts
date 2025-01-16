@@ -9,18 +9,22 @@ export const SideMenuWrapper = styled("div")<{ isOpen?: boolean }>`
 
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 100;
-  display: flex;
+  display: none;
   justify-content: flex-end;
 
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   visibility: ${({ isOpen }) => (isOpen ? "visible" : "hidden")};
   transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+  @media screen and (max-width: 500px) {
+    display: flex;
+  }
 `;
 
 export const SideMenuContent = styled.div`
   width: 80%;
   height: 100%;
-  display: none;
+  display: flex;
   flex-direction: column;
   align-items: center;
   padding: 16px;
@@ -35,10 +39,6 @@ export const SideMenuContent = styled.div`
 
   &.modal-open {
     transform: translateX(0);
-  }
-
-  @media screen and (max-width: 500px) {
-    display: flex;
   }
 `;
 
