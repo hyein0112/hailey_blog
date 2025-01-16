@@ -23,7 +23,7 @@ export const SideMenuContent = styled.div`
   display: none;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0;
+  padding: 16px;
   gap: 24px;
   background: ${({ theme }) => theme.colors.background2};
   border-top-left-radius: 4px;
@@ -44,7 +44,6 @@ export const SideMenuContent = styled.div`
 
 export const CloseButton = styled.button`
   align-self: flex-start;
-  padding-left: 16px;
 `;
 
 export const MenuBox = styled.ul`
