@@ -29,7 +29,6 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
                 <S.PCButton>Blog</S.PCButton>
               </Link>
               <Link href={"/about"}>
-                {" "}
                 <S.PCButton>About</S.PCButton>
               </Link>
               <S.MOButton onClick={() => setShowSideMenu(true)}>

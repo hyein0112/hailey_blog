@@ -10,15 +10,22 @@ export const Container = styled.div`
 
 export const TagAndDate = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  padding: 16px 0 20px 0;
+  gap: 12px;
+  padding: 12px 0 20px 0;
+  font-size: ${({ theme }) => theme.fontSize.sm};
 
   & > span:first-of-type {
     color: ${({ theme }) => theme.colors.green600};
-    font-size: ${({ theme }) => theme.fontSize.md};
     font-weight: 600;
+    background-color: ${({ theme }) => theme.colors.background3};
+    padding: 4px 8px;
+    border-radius: 8px;
+  }
+
+  & > span:last-of-type {
+    margin-top: -3px;
+    color: ${({ theme }) => theme.colors.text1};
   }
 `;
 

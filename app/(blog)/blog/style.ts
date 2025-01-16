@@ -22,6 +22,7 @@ export const MenuTapBox = styled.div`
   align-items: center;
   gap: 12px;
   overflow-x: scroll;
+  padding: 8px 0;
 `;
 
 export const TapButton = styled("button")<{ isTap?: boolean }>`

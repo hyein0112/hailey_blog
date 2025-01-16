@@ -49,12 +49,12 @@ export default function PostContent({ content }: { content: PostData }) {
 
   return (
     <S.Container>
+      <h1>{content.title}</h1>
       <S.TagAndDate>
         <span>{tagConverter(content.tag)}</span>
         <span>{dayjs.tz(content.createdAt).format("YYYY년 MM월 DD일")}</span>
       </S.TagAndDate>
-      <h1>{content.title}</h1>
-      <Divider height="2px" margin="8px 0" />
+      <Divider height="1px" margin="8px 0 24px 0" />
       <S.ContentBox dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </S.Container>
   );
