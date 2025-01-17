@@ -26,15 +26,15 @@ export default function SideMenu({ isOpen, onClose }: { isOpen: boolean; onClose
           <CgClose size={24} />
         </S.CloseButton>
         <S.MenuBox>
-          <Link href={"/"}>
+          <Link href={"/"} onClick={onClose}>
             <S.Menu>Home</S.Menu>
           </Link>
           <Divider width="100%" color={theme.colors.border1} />
-          <Link href={"/blog"}>
+          <Link href={"/blog"} onClick={onClose}>
             <S.Menu>Blog</S.Menu>
           </Link>
           <Divider width="100%" color={theme.colors.border1} />
-          <Link href={"/about"}>
+          <Link href={"/about"} onClick={onClose}>
             <S.Menu>About</S.Menu>
           </Link>
         </S.MenuBox>
