@@ -44,6 +44,7 @@ export const SideMenuContent = styled.div`
 
 export const CloseButton = styled.button`
   align-self: flex-start;
+  color: ${({ theme }) => theme.colors.text3};
 `;
 
 export const MenuBox = styled.ul`
