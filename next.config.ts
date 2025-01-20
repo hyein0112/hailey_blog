@@ -27,6 +27,10 @@ const nextConfig: NextConfig = {
     return config;
   },
 
+  compiler: {
+    emotion: true,
+  },
+
   experimental: {
     turbo: {
       rules: {

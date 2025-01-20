@@ -2,6 +2,12 @@
 import { Header } from "@/components/common";
 
 import * as S from "./style";
+import { Metadata } from "next";
+import { getMetadata } from "@/lib/metaData";
+
+// export const generateMetadata = async (): Promise<Metadata> => {
+//   return getMetadata({ asPath: `/home` });
+// };
 
 export default function HomePage() {
   return (
