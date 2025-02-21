@@ -43,3 +43,13 @@ export async function getPostOne(id: string) {
     console.error(e);
   }
 }
+
+export async function getPostRecent() {
+  try {
+    const list = await db.collection("posts").find().skip(5).toArray();
+    if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
+    return NextResponse.json(list.reverse());
+  } catch (e) {
+    console.error(e);
+  }
+}

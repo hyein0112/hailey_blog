@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       screens: {
         sm: "500px",
+        xl: "3000px",
       },
       fontFamily: {
         notoSansKr: ["var(--font-noto-sans-kr)"],

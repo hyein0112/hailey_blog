@@ -49,6 +49,10 @@ function BlogContent() {
 
   return (
     <S.ContentBox>
+      <section>
+        <h1 className="text-3xl mb-1">Blog</h1>
+        <span>공부한거 까먹지 않게 기록했어유</span>
+      </section>
       <S.MenuTapBox>
         <S.TapButton isTap={tag === "all"} onClick={() => handleMove("all")}>
           All
