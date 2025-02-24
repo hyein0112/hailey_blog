@@ -4,7 +4,8 @@ import { ObjectId } from "mongodb";
 
 export async function getPostList(page: number, searchTag: string) {
   try {
-    const pageSize = 10;
+    console.log(page);
+    const pageSize = 6;
     const filter = searchTag === "all" ? {} : { tag: { $regex: searchTag } };
 
     const [items, totalElement] = await Promise.all([
@@ -46,7 +47,7 @@ export async function getPostOne(id: string) {
 
 export async function getPostRecent() {
   try {
-    const list = await db.collection("posts").find().skip(5).toArray();
+    const list = await db.collection("posts").find().sort({ createdAt: -1 }).limit(4).toArray();
     if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
     return NextResponse.json(list.reverse());
   } catch (e) {

@@ -4,40 +4,35 @@ import { useEffect, useState, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 import { PostList } from "@/types/post";
-import { Header, Divider } from "@/components/common";
+import { Header, Divider, Pagination } from "@/components/common";
 import { PostBox } from "@/components";
 import * as S from "./style";
 import tagConverter from "@/lib/tagConverter";
 
 // 캐시 저장
-const cache = new Map<string, PostList>();
 
 function BlogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const tag = searchParams.get("tag") || "all";
 
+  const [pageIndex, setPageIndex] = useState(0);
+
   const [blogList, setBlogList] = useState<PostList>();
 
   const getPostList = useCallback(async () => {
-    if (cache.has(tag)) {
-      setBlogList(cache.get(tag));
-      return;
-    }
-
     try {
       const res = await axios.get("/api/posts", {
         params: {
-          page: 1,
+          page: pageIndex + 1,
           searchTag: tag,
         },
       });
-      cache.set(tag, res.data);
       setBlogList(res.data);
     } catch (e) {
       console.log(e);
     }
-  }, [tag]);
+  }, [tag, pageIndex]);
 
   useEffect(() => {
     getPostList();
@@ -72,10 +67,15 @@ function BlogContent() {
         📚 {tagConverter(tag)} ({blogList?.totalElement})
       </S.TapTitle>
       <S.PostContainer>
-        {blogList?.data.map((post) => (
-          <PostBox key={post._id} post={post} />
-        ))}
+        {blogList?.data.length || 0 > 0 ? blogList?.data.map((post) => <PostBox key={post._id} post={post} />) : <div>no data</div>}
       </S.PostContainer>
+      {blogList?.totalElement && blogList?.totalElement > 0 ? (
+        <div className="self-center mt-8 mb-8">
+          <Pagination pageIndex={pageIndex} setPageIndex={setPageIndex} totalPages={blogList.totalPage} />
+        </div>
+      ) : (
+        <></>
+      )}
     </S.ContentBox>
   );
 }

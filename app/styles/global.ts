@@ -39,7 +39,7 @@ const globalStyle = css`
     background-color: #f2f2f2;
     font-family: var(--font-noto-sans-kr);
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   ol,
@@ -48,6 +48,7 @@ const globalStyle = css`
   }
 
   button {
+    font-family: var(--font-noto-sans-kr);
     width: fit-content;
     height: fit-content;
     border: 0;
@@ -62,6 +63,16 @@ const globalStyle = css`
 
   body:has(.modal-open) {
     overflow: hidden;
+  }
+
+  .text-overflow-1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-word;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 1; // 원하는 라인 수
+    -webkit-box-orient: vertical;
   }
 `;
 
