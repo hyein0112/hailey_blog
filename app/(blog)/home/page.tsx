@@ -1,16 +1,10 @@
-"use client";
-import { Header } from "@/components/common";
+import { getMetadata } from "@/lib/metaData";
+import HomePage from "./HomePage";
 
-import * as S from "./style";
+export async function generateMetadata() {
+  return getMetadata({ title: "Home", description: "안녕하세요 프론트엔드 개발자 백혜인 입니다." });
+}
 
-export default function HomePage() {
-  return (
-    <S.Container>
-      <Header isDetail={false} />
-      <S.ContentBox>
-        <h1>Hailey</h1>
-        <p>안녕하세요 백혜인입니다.</p>
-      </S.ContentBox>
-    </S.Container>
-  );
+export default function Page() {
+  return <HomePage />;
 }

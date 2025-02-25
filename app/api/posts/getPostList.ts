@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 
 export async function getPostList(page: number, searchTag: string) {
   try {
-    const pageSize = 10;
+    const pageSize = 6;
     const filter = searchTag === "all" ? {} : { tag: { $regex: searchTag } };
 
     const [items, totalElement] = await Promise.all([
@@ -41,5 +41,17 @@ export async function getPostOne(id: string) {
     return NextResponse.json(item);
   } catch (e) {
     console.error(e);
+    return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
+  }
+}
+
+export async function getPostRecent() {
+  try {
+    const list = await db.collection("posts").find().sort({ createdAt: -1 }).limit(4).toArray();
+    if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
+    return NextResponse.json(list);
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
   }
 }

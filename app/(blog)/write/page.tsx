@@ -16,7 +16,6 @@ export default function WritePage() {
   const { postData } = usePost();
 
   const handleClickPost = async () => {
-    console.log(postData);
     try {
       const data = await axios.post("/api/write", {
         title: postData?.title,
