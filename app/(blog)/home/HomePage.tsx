@@ -11,16 +11,16 @@ export default async function HomePage() {
   const data: PostData[] = await response.json();
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col pb-10">
       <Header isDetail={false} />
-      <main className="self-center w-full flex flex-col items-center gap-10">
+      <main className="self-center w-full flex flex-col items-center gap-[3vh]">
         <section className="w-full max-w-[1200px] p-4 md:p-6">
           <h1 className="text-3xl">Hailey</h1>
           <span className="font-medium">FrontEnd Developer</span>
 
           <p className="mt-3">
             안녕하세요. 백혜인입니다! <br />
-            주절주절 어쩌구저쩌거 내소개 주절주절 어쩌구저쩌거 내소개 <br />
+            주절주절 어쩌구저쩌거 내소개 주절주절 어쩌구저쩌거 <br />
             주절주절 어쩌구저쩌거 주저리주저리 블라블라
           </p>
           <Link href="/about">
@@ -36,7 +36,13 @@ export default async function HomePage() {
             {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
               <Link href={`posts/${_id}`} key={_id} className="bg-white flex flex-col gap-2 pb-2 w-[230px] justify-between rounded-lg">
                 <div>
-                  <Image width={230} height={140} className="rounded-t-lg rounded-tr-lg" src={thumbnail || ""} alt={"thumbnail"} />
+                  <Image
+                    width={230}
+                    height={140}
+                    className="rounded-t-lg rounded-tr-lg object-cover"
+                    src={thumbnail || ""}
+                    alt={"thumbnail"}
+                  />
                   <span className="text-[15px] font-normal text-overflow-1 pl-2 pr-2">{title}</span>
                 </div>
                 <div className="flex justify-between">
@@ -46,7 +52,7 @@ export default async function HomePage() {
               </Link>
             ))}
             <Link href="/blog">
-              <button className="min-w-40 h-full flex justify-center items-center underline">ALL POSTS... </button>
+              <button className="min-w-40 text-base text-gray-700 underline">ALL POSTS... </button>
             </Link>
           </div>
         </section>
