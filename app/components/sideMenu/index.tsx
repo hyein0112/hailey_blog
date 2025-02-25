@@ -19,7 +19,7 @@ export default function SideMenu({ isOpen, onClose }: { isOpen: boolean; onClose
 
   return (
     <div
-      className={`hidden fixed inset-0 bg-black/70 z-50 justify-end sm:flex ${
+      className={`flex fixed inset-0 bg-black/70 z-50 justify-end sm:hidden ${
         isOpen ? "opacity-100 visible" : "opacity-0 invisible"
       } transition-opacity duration-300 ease-in-out`}>
       <div

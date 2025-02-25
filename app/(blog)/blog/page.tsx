@@ -38,6 +38,10 @@ function BlogContent() {
     getPostList();
   }, [getPostList]);
 
+  useEffect(() => {
+    setPageIndex(0);
+  }, [tag]);
+
   const handleMove = (newTag: string) => {
     router.push(`/blog?tag=${newTag}`);
   };

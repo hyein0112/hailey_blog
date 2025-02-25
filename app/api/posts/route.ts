@@ -7,8 +7,6 @@ export async function GET(request: NextRequest) {
     const page = parseInt(searchParams.get("page") || "1");
     const searchTag = searchParams.get("searchTag") || "";
 
-    console.log(page, "page");
-
     if (searchTag !== "front" && searchTag !== "back" && searchTag !== "" && searchTag !== "all" && searchTag !== "etc")
       return NextResponse.json({ error: "tag값이 올바르지 않습니다." }, { status: 400 });
 

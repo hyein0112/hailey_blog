@@ -26,14 +26,11 @@ const PaginationV2 = ({ totalPages, pageIndex, setPageIndex }: PaginationProps) 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     pages && setPageIndex(pages[currentPageGroup][currentPage] - 1);
-    console.log(pages && pages[currentPageGroup][currentPage] - 1);
   }, [currentPageGroup, currentPage]);
 
   useEffect(() => {
-    if (pageIndex > 0) {
-      setCurrentPage(pageIndex % 5 || 0);
-      setCurrentPageGroup(Math.floor(pageIndex / 5) || 0);
-    }
+    setCurrentPage(pageIndex % 5 || 0);
+    setCurrentPageGroup(Math.floor(pageIndex / 5) || 0);
   }, [pageIndex]);
 
   return (
@@ -75,7 +72,7 @@ const PaginationV2 = ({ totalPages, pageIndex, setPageIndex }: PaginationProps) 
                   id="1"
                   type="button"
                   className={`flex h-10 w-10 items-center justify-center p-4 ${
-                    currentPage === index && "bg-green-500 rounded-full text-[#000000]"
+                    currentPage === index && "bg-green-500 rounded-full text-white"
                   }`}
                   onClick={() => setCurrentPage(index)}>
                   {page}
