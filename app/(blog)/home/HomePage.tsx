@@ -24,7 +24,7 @@ export default async function HomePage() {
             주절주절 어쩌구저쩌거 주저리주저리 블라블라
           </p>
           <Link href="/about">
-            <button className="text-base text-gray-700 underline">더보기... </button>
+            <button className="text-base text-gray-700 underline mt-3">더보기... </button>
           </Link>
         </section>
         <section className="w-full flex flex-col items-center">
@@ -35,7 +35,7 @@ export default async function HomePage() {
           <div className="flex w-full pl-4 md:pl-6 xl:pl-[calc((100%-1150px)/2)] pr-4 gap-4 overflow-x-scroll items-center self-end">
             {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
               <Link href={`posts/${_id}`} key={_id} className="bg-white flex flex-col gap-2 pb-2 w-[230px] justify-between rounded-lg">
-                <div>
+                <div className="relative">
                   <Image
                     width={230}
                     height={140}
@@ -43,11 +43,14 @@ export default async function HomePage() {
                     src={thumbnail || ""}
                     alt={"thumbnail"}
                   />
+                  <span className="text-sm bg-white border border-solid box-border p-3 pt-[1px] pb-[1px] rounded-xl text-green-600 absolute right-2 top-2">
+                    {tagConverter(tag, true)}
+                  </span>
+
                   <span className="text-[15px] font-normal text-overflow-1 pl-2 pr-2">{title}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm pl-2">{dayjs.tz(createdAt).format("YYYY년 MM월 DD일")}</span>
-                  <span className="text-sm text-green-600 pr-2">{tagConverter(tag)}</span>
                 </div>
               </Link>
             ))}
