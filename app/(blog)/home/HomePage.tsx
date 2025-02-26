@@ -6,6 +6,8 @@ import Link from "next/link";
 import { getPostRecent } from "@/api/posts/getPostList";
 import { PostData } from "@/types/post";
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const response = await getPostRecent();
   const data: PostData[] = await response.json();
