@@ -1,6 +1,15 @@
 import styled from "@emotion/styled";
 
 export const PostBox = styled.div`
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+  & .animate-pulse {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
   max-height: 400px;
   height: 210px;
   display: flex;

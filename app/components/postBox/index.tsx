@@ -17,20 +17,15 @@ export default function PostBox({ post }: { post?: PostData }) {
     <S.PostBox>
       <S.TextBox>
         <S.TitleAndContentBox>
-          <div className="bg-border2 w-3/4 h-6 mb-2"></div>
-          <div className="bg-border2 w-full max-h-[68px] h-[60%]"></div>
+          <div className="bg-border2 w-3/4 h-6 mb-2 animate-pulse"></div>
+          <div className="bg-border2 w-full max-h-[68px] h-[60%] animate-pulse"></div>
         </S.TitleAndContentBox>
         <S.TagAndDateBox>
-          <div className="bg-border2 w-40 h-5"></div>
+          <div className="bg-border2 w-40 h-5 animate-pulse"></div>
         </S.TagAndDateBox>
       </S.TextBox>
       <S.ImageBox>
-        <Image
-          width={230}
-          height={230}
-          src={"https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/Rectangle%206.png"}
-          alt={"loading Image"}
-        />
+        <div className="animate-pulse w-[230px] h-[230px]" />
       </S.ImageBox>
     </S.PostBox>
   ) : (
