@@ -43,6 +43,7 @@ export const TextBox = styled.div`
 `;
 
 export const TitleAndContentBox = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -98,12 +99,16 @@ export const ImageBox = styled.div`
   width: 230px;
   display: flex;
 
-  & > img {
+  & > img,
+  div {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
     aspect-ratio: 8 / 5;
+  }
+  & > div {
+    background-color: ${({ theme }) => theme.colors.border2};
   }
 
   @media screen and (max-width: 500px) {
