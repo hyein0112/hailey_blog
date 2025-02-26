@@ -1,2 +1,48 @@
 @tailwind components;
 @tailwind utilities;
+.post-content {
+  display: flex;
+  flex-direction: column;
+  p {
+    display: block;
+    margin: 8px 0;
+    line-height: normal;
+
+    &:has(img) {
+      text-align: center;
+    }
+  }
+
+  pre {
+    width: 100%;
+    background-color: #e4e6e8;
+    padding: 16px;
+    margin: 4px 0;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    overflow-x: auto;
+  }
+
+  code {
+    padding: 4px;
+    background-color: #e4e6e8;
+    border-radius: 4px;
+    margin-right: 2px;
+  }
+
+  h1,
+  h2 {
+    margin: 20px 0 4px 0;
+  }
+
+  h3 {
+    margin: 12px 0 4px 0;
+  }
+
+  img {
+    max-width: 600px;
+    align-self: center;
+    width: 100%;
+    object-fit: cover;
+  }
+}
