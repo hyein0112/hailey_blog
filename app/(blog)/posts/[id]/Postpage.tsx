@@ -7,7 +7,7 @@ export default async function PostDetailPage({ content }: { content: PostData })
     <div className="flex flex-col h-screen items-center bg-background2">
       <Header isDetail={true} />
       <ProgressBar />
-      <main className="py-10 px-4 flex flex-col max-w-[1000px] w-full">
+      <main className="py-10 px-4 flex flex-col max-w-[1150px] w-full">
         <PostContent content={content} />
         <Giscus />
       </main>

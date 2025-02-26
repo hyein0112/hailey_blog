@@ -54,7 +54,7 @@ function BlogContent() {
     <S.ContentBox>
       <section>
         <h1 className="text-3xl mb-1">Blog</h1>
-        <span>공부한거 까먹지 않게 기록했어유</span>
+        <span>공부한 내용을 온전히 기억하기 위해 기록합니다!</span>
       </section>
       <S.MenuTapBox>
         <S.TapButton isTap={tag === "all"} onClick={() => handleMove("all")}>

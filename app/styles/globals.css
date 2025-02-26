@@ -46,3 +46,11 @@
     object-fit: cover;
   }
 }
+
+.button-hover {
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(90%);
+    transition: transform 0.4s;
+  }
+}
