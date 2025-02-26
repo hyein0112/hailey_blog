@@ -1,37 +1,25 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-
-import { Header, Giscus, ProgressBar } from "@/components/common";
-import * as S from "./style";
-import axios from "axios";
-import { PostContent } from "@/components";
+import { getPostOne } from "@/api/posts/getPostList";
+import PostPage from "./Postpage";
 import { PostData } from "@/types/post";
+import { getMetadata } from "@/lib/metaData";
+import removeMd from "remove-markdown-and-html";
 
-export default function PostDetailPage() {
-  const { id } = useParams<{ id: string }>();
-  const [content, setContent] = useState<PostData>();
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    const getPostData = async () => {
-      const data = await axios.get(`/api/posts/${id}`);
-      setContent(data.data);
-    };
+async function getPostData(id: string): Promise<PostData> {
+  const response = await getPostOne(id);
+  return await response.json();
+}
 
-    getPostData();
-  }, [id]);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const data = await getPostData(id);
+  return getMetadata({ title: data.title, description: removeMd(data.content), ogImage: data.thumbnail });
+}
 
-  return (
-    content && (
-      <S.Container>
-        <Header isDetail={true} />
-        <ProgressBar />
-        <S.Main>
-          <PostContent content={content} />
-          <Giscus />
-        </S.Main>
-      </S.Container>
-    )
-  );
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const data = await getPostData(id);
+
+  return <PostPage content={data} />;
 }

@@ -9,8 +9,6 @@ import { PostBox } from "@/components";
 import * as S from "./style";
 import tagConverter from "@/lib/tagConverter";
 
-// 캐시 저장
-
 function BlogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
