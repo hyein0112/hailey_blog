@@ -23,17 +23,23 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
                 <Logo />
               </Link>
             </div>
-            <div className="flex h-full items-center gap-2 md:gap-1">
-              <Link href="/blog">
-                <button className="hidden md:flex justify-center items-center p-1 text-base">Blog</button>
-              </Link>
-              <Link href="/about">
-                <button className="hidden md:flex justify-center items-center p-1 text-base">About</button>
-              </Link>
-              <button className="md:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>
-                <RxHamburgerMenu size={24} className="text-border4" />
-              </button>
-            </div>
+            <nav className="">
+              <ul className="flex h-full items-center gap-2 md:gap-1">
+                <li>
+                  <Link href="/blog">
+                    <button className="hidden md:flex justify-center items-center p-1 text-base">Blog</button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about">
+                    <button className="hidden md:flex justify-center items-center p-1 text-base">About</button>
+                  </Link>
+                </li>
+                <button className="md:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>
+                  <RxHamburgerMenu size={24} className="text-border4" />
+                </button>
+              </ul>
+            </nav>
           </div>
         </div>
       </header>
