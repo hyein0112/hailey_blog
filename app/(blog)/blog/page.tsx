@@ -20,8 +20,11 @@ function BlogContent() {
 
   const [blogList, setBlogList] = useState<PostList>();
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const getPostList = useCallback(async () => {
     try {
+      setIsLoading(true);
       const res = await axios.get("/api/posts", {
         params: {
           page: pageIndex + 1,
@@ -29,6 +32,9 @@ function BlogContent() {
         },
       });
       setBlogList(res.data);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     } catch (e) {
       console.log(e);
     }
@@ -71,7 +77,13 @@ function BlogContent() {
         📚 {tagConverter(tag)} ({blogList?.totalElement})
       </S.TapTitle>
       <S.PostContainer>
-        {blogList?.data.length || 0 > 0 ? blogList?.data.map((post) => <PostBox key={post._id} post={post} />) : <div>no data</div>}
+        {isLoading ? (
+          [1, 1, 1].map((_, i) => <PostBox key={i} />)
+        ) : (blogList?.data.length || 0) > 0 ? (
+          blogList?.data.map((post) => <PostBox key={post._id} post={post} />)
+        ) : (
+          <div>{tag}에 해당하는 포스트가 없어요</div>
+        )}
       </S.PostContainer>
       {blogList?.totalElement && blogList?.totalElement > 0 ? (
         <div className="self-center mt-8 mb-8">

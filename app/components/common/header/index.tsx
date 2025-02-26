@@ -23,14 +23,14 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
                 <Logo />
               </Link>
             </div>
-            <div className="flex h-full items-center gap-2 sm:gap-1">
+            <div className="flex h-full items-center gap-2 md:gap-1">
               <Link href="/blog">
-                <button className="hidden sm:flex justify-center items-center p-1 text-base">Blog</button>
+                <button className="hidden md:flex justify-center items-center p-1 text-base">Blog</button>
               </Link>
               <Link href="/about">
-                <button className="hidden sm:flex justify-center items-center p-1 text-base">About</button>
+                <button className="hidden md:flex justify-center items-center p-1 text-base">About</button>
               </Link>
-              <button className="sm:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>
+              <button className="md:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>
                 <RxHamburgerMenu size={24} className="text-border4" />
               </button>
             </div>

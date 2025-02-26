@@ -1,6 +1,15 @@
 import styled from "@emotion/styled";
 
 export const PostBox = styled.div`
+  @keyframes pulse {
+    50% {
+      opacity: 0.5;
+    }
+  }
+  & .animate-pulse {
+    animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
   max-height: 400px;
   height: 210px;
   display: flex;
@@ -43,6 +52,7 @@ export const TextBox = styled.div`
 `;
 
 export const TitleAndContentBox = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -98,12 +108,16 @@ export const ImageBox = styled.div`
   width: 230px;
   display: flex;
 
-  & > img {
+  & > img,
+  div {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
     aspect-ratio: 8 / 5;
+  }
+  & > div {
+    background-color: ${({ theme }) => theme.colors.border2};
   }
 
   @media screen and (max-width: 500px) {
