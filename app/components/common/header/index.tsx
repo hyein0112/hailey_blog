@@ -13,7 +13,7 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
     <>
       <SideMenu isOpen={showSideMenu} onClose={() => setShowSideMenu(false)} />
       <header
-        className={`top-0 left-0 right-0 z-10 h-[70px] border-solid border-0 border-b border-b-border2 backdrop-blur-lg bg-background2/90 flex items-center justify-center transition-[height] duration-300 ${
+        className={`top-0 left-0 right-0 z-10 h-[70px] border-solid border-0 border-b border-b-border2 flex items-center justify-center transition-[height] duration-300 background-blur ${
           isDetail ? "static w-full" : "sticky"
         }`}>
         <div className="w-full h-full flex flex-col items-center justify-center">
