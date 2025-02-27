@@ -28,10 +28,10 @@ export default function AboutPage() {
                   일하고 있습니다.
                 </p>
                 <p>
-                  다양한 기술을 배우는데 열정이 있으며, 늘 <span className="font-semibold text-green-600">성장하기 위해 노력</span>합니다.{" "}
+                  다양한 기술을 배우는데 열정이 있으며 늘 <span className="font-semibold text-green-600">성장하기 위해 노력</span>합니다.
                 </p>
                 <p>
-                  <span className="font-semibold text-green-600">함께 성장하는 팀 문화</span>를 지향하며, 지식을 나누는 것을 좋아합니다.
+                  <span className="font-semibold text-green-600">함께 성장하는 팀 문화</span>를 지향하며 지식을 나누는 것을 좋아합니다.
                 </p>
               </div>
               <div className="flex gap-2">
