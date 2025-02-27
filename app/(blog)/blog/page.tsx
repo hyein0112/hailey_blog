@@ -28,9 +28,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
         <div className="self-center mt-8 mb-8">
           <Pagination totalPages={data.totalPage} tag={tag || ""} pageIndex={data.page - 1} currentPage={page} />
         </div>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   );
 }
