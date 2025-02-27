@@ -19,7 +19,7 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
         <div className="w-full h-full flex flex-col items-center justify-center">
           <div className="w-full h-[70px] max-w-[1200px] px-6 flex justify-between items-center">
             <div className="flex items-center">
-              <Link href="/">
+              <Link href="/home">
                 <Logo />
               </Link>
             </div>
