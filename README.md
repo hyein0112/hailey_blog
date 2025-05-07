@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hailey's Blog
 
-## Getting Started
+Next.js를 사용한 개인 블로그 프로젝트입니다.
 
-First, run the development server:
+Demo: [devhailey.com](https://devhailey.com)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 기술 스택
+### 프론트엔드
+
+| 카테고리 | 기술 | 버전 | 설명 |
+|---------|------|------|------|
+| **프레임워크** | Next.js | 15.1.3 | React 기반 프레임워크 |
+| | React | 19.0.0 | UI 라이브러리 |
+| | TypeScript | 5.x | 정적 타입 지원 |
+| **스타일링** | Tailwind CSS | 3.4.17 | 유틸리티 기반 CSS 프레임워크 |
+| | Emotion | 11.14.0 | CSS-in-JS 솔루션 |
+| **상태 관리** | Zustand | 5.0.2 | 경량 상태 관리 라이브러리 |
+| **UI/UX** | react-icons | 5.4.0 | 아이콘 라이브러리 |
+| | @uiw/react-md-editor | 4.0.5 | 마크다운 에디터 |
+
+### 서버 및 배포
+
+| 카테고리 | 기술 |  설명 |
+|---------|------|------|
+| **데이터베이스** | MongoDB | NoSQL 데이터베이스 |
+| **클라우드** | Cloudflare R2 (aws s3 sdk 사용) |  파일 스토리지 서비스 |
+| **배포** | Vercel | 웹 호스팅 서비스 |
+
+
+
+## 프로젝트 구조
+```
+app/
+├── api/ # API 라우트
+├── assets/ # 정적 자산
+├── components/ # 재사용 가능한 컴포넌트
+├── constants/ # 상수 정의
+├── lib/ # 유틸리티 함수
+├── stores/ # Zustand 스토어
+├── styles/ # 전역 스타일
+├── types/ # TypeScript 타입 정의
+└── (blog)/ # 블로그 관련 페이지
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 프로젝트 시작하기
+### 개발모드
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**1. 의존성 설치 후 dev 서버 실행**
+```bash
+yarn install
+yarn dev
+```
+**2. 브라우저에서 [http://localhost:3000](http://localhost:3000) 접속**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 빌드 및 배포
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+yarn build
+yarn start
+```
