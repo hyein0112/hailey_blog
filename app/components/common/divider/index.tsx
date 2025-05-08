@@ -4,12 +4,7 @@ export default function Divider({ color, width, height, margin }: { color?: stri
   const defaultHeight = "border-[1px]";
   const defaultMargin = "";
 
-  const dividerClasses = `
-    ${width || defaultWidth}
-    ${height ? `border-[${height}]` : defaultHeight}
-    ${color ? `border-[${color}]` : defaultColor}
-    ${margin ? `m-[${margin}]` : defaultMargin}
-  `;
+  const dividerClasses = `${width || defaultWidth} ${height ? `border-[${height}]` : defaultHeight} ${color ? `border-[${color}]` : defaultColor} ${margin ? `m-[${margin}]` : defaultMargin}`;
 
-  return <div className={`border border-solid ${dividerClasses.trim()}`} />;
+  return <div className={`border border-solid ${dividerClasses.trim()}`} style={{ borderColor: color }} />;
 }
