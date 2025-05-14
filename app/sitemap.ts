@@ -3,12 +3,10 @@ import { getPostAll } from "./api/posts/getPostList";
 import { WithId, Document } from "mongodb";
 
 interface Post extends WithId<Document> {
-  id: string;
   title: string;
   createdAt: string;
   updatedAt?: string;
 }
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://devhailey.com";
 
