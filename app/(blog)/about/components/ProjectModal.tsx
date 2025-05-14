@@ -2,7 +2,6 @@
 
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { Project } from '../types';
-import Image from 'next/image';
 import { IoLogoGithub } from 'react-icons/io';
 
 interface ProjectModalProps {
