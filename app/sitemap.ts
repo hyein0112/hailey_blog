@@ -3,9 +3,7 @@ import { getPostAll } from "./api/posts/getPostList";
 import { WithId, Document } from "mongodb";
 
 interface Post extends WithId<Document> {
-  title: string;
   createdAt: string;
-  updatedAt?: string;
 }
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || "https://devhailey.com";
@@ -17,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 블로그 포스트 URL 생성
   const postsUrls = posts.map((post) => ({
     url: `${baseUrl}/posts/${post._id}`,
-    lastModified: new Date(post.updatedAt || post.createdAt),
+    lastModified: new Date(post.createdAt),
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
