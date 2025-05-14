@@ -18,6 +18,7 @@ export const ContentBox = styled.main`
 
 export const MenuTapBox = styled.div`
   width: 100%;
+  overflow-x: auto;
   display: flex;
   gap: 12px;
   padding: 8px 0;
