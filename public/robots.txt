@@ -6,4 +6,4 @@ Allow: /
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://hailey-blog.vercel.app/sitemap.xml
+Sitemap: https://devhailey.com/sitemap.xml
