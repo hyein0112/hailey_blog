@@ -55,3 +55,14 @@ export async function getPostRecent() {
     return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
   }
 }
+
+export async function getPostAll() {
+  try {
+    const list = await db.collection("posts").find().sort({ createdAt: -1 }).toArray();
+    if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
+    return NextResponse.json(list);
+  } catch (e) {
+    console.error(e);
+    return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
+  }
+}
