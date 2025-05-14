@@ -1,13 +1,37 @@
-import { Header } from "@/components/common";
+'use client'
+
+import { Divider, Header } from "@/components/common";
 import Image from "next/image";
 import { IoLogoGithub, IoMdMail } from "react-icons/io";
+import { FaBriefcase, FaProjectDiagram } from "react-icons/fa";
+import ProjectCard from './components/ProjectCard';
+import ProjectModal from './components/ProjectModal';
+import { Project } from './types';
+import { useState, useEffect } from 'react';
+import { companies } from './data/companies';
+import { personalProjects } from './data/personalProjects';
+
 export default function AboutPage() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
+
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex min-h-screen flex-col">
       <Header isDetail={false} />
-      <main className="self-center p-4 md:p-6 w-full max-w-[1200px] flex flex-col gap-[5vh]">
-        <section>
-          <div className="flex flex-col md:flex-row items-center mt-3 gap-4">
+      <main className="flex-1 self-center p-4 md:p-6 w-full max-w-[1200px] flex flex-col gap-12">
+        <section className="mb-6">
+          <div className="flex flex-col md:flex-row items-center justify-center mt-6 gap-6">
             <div className="flex flex-col items-center gap-4">
               <Image
                 className="object-cover rounded-full border-[6px] border-solid border-green-500 min-w-[160px] h-[160px]"
@@ -28,7 +52,7 @@ export default function AboutPage() {
                   일하고 있습니다.
                 </p>
                 <p>
-                  다양한 기술을 배우는데 열정이 있으며 늘 <span className="font-semibold text-green-600">성장하기 위해 노력</span>합니다.
+                  다양한 기술을 배우는데 열정이 있으며 늘 <span className="font-semibold text-green-600">발전하기 위해 노력</span>합니다.
                 </p>
                 <p>
                   <span className="font-semibold text-green-600">함께 성장하는 팀 문화</span>를 지향하며 지식을 나누는 것을 좋아합니다.
@@ -55,13 +79,83 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-        <section>
-          <h1 className="text-3xl">Work</h1>
+        <div className="flex justify-center">
+          <Divider color="#eaeaed" />
+        </div>
+
+        {/* Work Experience */}
+        <section className="mt-6 flex flex-col gap-8">
+          <div className="flex items-center gap-3">
+            <FaBriefcase className="text-2xl text-green-600" />
+            <h2 className="text-3xl font-bold">Work Experience</h2>
+          </div>
+          
+          <div className="space-y-12">
+            {companies.map((company, index) => (
+              <div key={company.id} className="relative">
+                {index !== companies.length - 1 && (
+                  <div className="absolute hidden md:block left-16 top-16 bottom-0 w-0.5 bg-gray-300" />
+                )}
+                
+                <div className="flex flex-col md:flex-row gap-4 md:gap-10">
+                  <div className="w-full md:w-32 text-left md:text-center flex-shrink-0">
+                    <div className="sticky top-8">
+                      <span className="text-sm text-gray-500">{company.period}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex-1">
+                    <div className="rounded-2xl">
+                      <div className="mb-6">
+                        <h3 className="text-2xl font-bold">{company.name}</h3>
+                        <p className="text-gray-600 mt-1">{company.position}</p>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        {company.projects.map((project) => (
+                          <ProjectCard
+                            key={project.id}
+                            project={project}
+                            onClick={() => setSelectedProject(project)}
+                            variant="company"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
-        <section>
-          <h1 className="text-3xl">Project</h1>
+
+        {/* Personal Projects */}
+        <section className="flex flex-col gap-8 mb-8">
+          <div className="flex items-center gap-3">
+            <FaProjectDiagram className="text-2xl text-green-600" />
+            <h2 className="text-3xl font-bold">Personal Projects</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {personalProjects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                onClick={() => setSelectedProject(project)}
+                variant="personal"
+              />
+            ))}
+          </div>
         </section>
       </main>
+
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+          variant={selectedProject.id.startsWith('personal') ? 'personal' : 'company'}
+        />
+      )}
     </div>
   );
 }
