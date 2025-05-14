@@ -58,7 +58,7 @@ export async function getPostRecent() {
 
 export async function getPostAll() {
   try {
-    const list = await db.collection("posts").find().sort({ createdAt: -1 }).toArray();
+    const list = await db.collection("posts").find().toArray();
     if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
     return NextResponse.json(list);
   } catch (e) {
