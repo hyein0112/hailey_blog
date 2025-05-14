@@ -11,12 +11,10 @@ import tagConverter from "@/lib/tagConverter";
 export default function BlogContent({ blogList }: { blogList: PostList }) {
   const router = useRouter();
   const [tag, setTag] = useState(blogList.searchTag);
-
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setTag(blogList.searchTag);
-    console.log(blogList.searchTag);
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -29,9 +27,9 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
 
   return (
     <S.ContentBox>
-      <section>
-        <h1 className="text-3xl mb-1">Blog</h1>
-        <span>공부한 개념을 온전히 이해하기 위해 기록합니다!</span>
+      <section className="space-y-2">
+        <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
+        <p className="text-gray-600 text-base md:text-lg">공부한 개념을 온전히 이해하기 위해 기록합니다!</p>
       </section>
 
       <S.MenuTapBox>
@@ -49,17 +47,21 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
         </S.TapButton>
       </S.MenuTapBox>
 
-      <Divider margin="0 0 8px 0" />
+      <Divider margin="0 0 16px 0" />
+      
       <S.TapTitle>
         📚 {tagConverter(tag)} ({blogList?.totalElement})
       </S.TapTitle>
+
       <S.PostContainer>
         {isLoading ? (
           [1, 1, 1].map((_, i) => <PostBox key={i} />)
         ) : (blogList?.data.length || 0) > 0 ? (
           blogList?.data.map((post) => <PostBox key={post._id} post={post} />)
         ) : (
-          <div>{tag}에 해당하는 포스트가 없어요</div>
+          <div className="text-center py-12 text-gray-500">
+            {tag}에 해당하는 포스트가 없어요
+          </div>
         )}
       </S.PostContainer>
     </S.ContentBox>

@@ -8,20 +8,19 @@ export const Container = styled.div`
 
 export const ContentBox = styled.main`
   align-self: center;
-  padding: 16px 24px;
+  padding: 32px 24px;
   width: 100%;
   max-width: 1200px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
 `;
 
 export const MenuTapBox = styled.div`
   width: 100%;
+  overflow-x: auto;
   display: flex;
-  align-items: center;
   gap: 12px;
-  overflow-x: scroll;
   padding: 8px 0;
 `;
 
@@ -50,4 +49,5 @@ export const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-top: 16px;
 `;

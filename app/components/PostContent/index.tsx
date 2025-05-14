@@ -34,7 +34,7 @@ export default function PostContent({ content }: { content: PostData }) {
   const htmlContent = marked(content.content);
 
   return (
-    <div className="w-full py-4 flex flex-col mb-20">
+    <div className="w-full p-4 flex flex-col mb-20">
       {/* Container */}
       <h1>{content.title}</h1>
       <div className="flex items-center gap-3 py-3 pb-5 text-sm">
