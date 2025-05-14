@@ -2,14 +2,16 @@ export interface Project {
   id: string;
   title: string;
   period: string;
+  shortDescription: string;
   description: string;
-  techStack: string[];
+  mainTechStack: string[];
+  subTechStack: string[];
   link?: string;
   demoUrl?: string;
   details?: {
     role: string;
     achievements: string[];
-    challenges: string[];
+    challenges?: string[];
     screenshots?: string[];
   };
 }
