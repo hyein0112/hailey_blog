@@ -70,7 +70,7 @@ export default function ProjectModal({ project, onClose, variant = 'personal' }:
             </div>
 
             {project.details.screenshots && (
-                <div className="w-full h-[400px] flex overflow-x-scroll gap-2">
+                <div className="w-full flex overflow-x-scroll gap-2">
                   {project.details.screenshots.map((screenshot, index) => (
                     <Image
                       key={index}
