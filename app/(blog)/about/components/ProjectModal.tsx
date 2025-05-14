@@ -3,6 +3,7 @@
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import { Project } from '../types';
 import { IoLogoGithub } from 'react-icons/io';
+import Image from "next/image";
 
 interface ProjectModalProps {
   project: Project;
@@ -71,10 +72,12 @@ export default function ProjectModal({ project, onClose, variant = 'personal' }:
             {project.details.screenshots && (
                 <div className="w-full h-[400px] flex overflow-x-scroll gap-2">
                   {project.details.screenshots.map((screenshot, index) => (
-                    <img
+                    <Image
                       key={index}
                       src={screenshot}
                       alt={`Screenshot ${index + 1}`}
+                      width={500}
+                      height={300}
                       className="object-contain"
                     />
                   ))}

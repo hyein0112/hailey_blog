@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getPostRecent } from "@/api/posts/getPostList";
 import { PostData } from "@/types/post";
-import { FaGithub, FaEnvelope, FaCode, FaLaptopCode, FaBook } from "react-icons/fa";
+import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiNestjs, SiMysql } from "react-icons/si";
 
 export default async function HomePage() {
@@ -14,7 +14,7 @@ export default async function HomePage() {
 
   type TechStackItem = {
     name: string;
-    icon?: any;
+    icon?: React.ElementType;
     customIcon?: React.ReactNode;
     color: string;
   };
@@ -76,11 +76,6 @@ export default async function HomePage() {
     { name: "Email", icon: FaEnvelope, url: "mailto:dev.hyein@icloud.com" },
   ];
 
-  const interests = [
-    { icon: FaCode, title: "코딩", description: "새로운 기술 학습과 실험적인 프로젝트" },
-    { icon: FaLaptopCode, title: "개발", description: "사용자 경험을 개선하는 웹 애플리케이션 개발" },
-    { icon: FaBook, title: "블로깅", description: "개발 경험과 지식 공유" },
-  ];
 
   return (
     <div className="flex h-full flex-col pb-10">
@@ -126,7 +121,11 @@ export default async function HomePage() {
               {frontendStack.map((tech) => (
                 <div key={tech.name} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-3">
-                    {tech.customIcon ? tech.customIcon : <tech.icon className={`text-[28px] ${tech.color}`} />}
+                    {tech.customIcon ? (
+                      tech.customIcon
+                    ) : tech.icon ? (
+                      <tech.icon className={`text-[28px] ${tech.color}`} />
+                    ) : null}
                     <span className="font-medium">{tech.name}</span>
                   </div>
                 </div>
@@ -141,7 +140,11 @@ export default async function HomePage() {
               {backendStack.map((tech) => (
                 <div key={tech.name} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-3">
-                    {tech.customIcon ? tech.customIcon : <tech.icon className={`text-[28px] ${tech.color}`} />}
+                    {tech.customIcon ? (
+                      tech.customIcon
+                    ) : tech.icon ? (
+                      <tech.icon className={`text-[28px] ${tech.color}`} />
+                    ) : null}
                     <span className="font-medium">{tech.name}</span>
                   </div>
                 </div>
@@ -184,7 +187,7 @@ export default async function HomePage() {
               </Link>
             ))}
             <Link href="/blog">
-              <button className="min-w-40 text-base text-gray-700 underline">ALL POSTS... </button>
+              <button className="min-w-40 text-base text-gray-700 underline hover:text-green-700 transition-colors">ALL POSTS... </button>
             </Link>
           </div>
         </section>
