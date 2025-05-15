@@ -1,12 +1,11 @@
-import { Header } from "@/components/common";
-import dayjs from "@/lib/dayjs";
-import tagConverter from "@/lib/tagConverter";
+import { Header } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { getPostRecent } from "@/api/posts/getPostList";
 import { PostData } from "@/types/post";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiNestjs, SiMysql } from "react-icons/si";
+import RecentPostCard from "./components/RecentPostCard";
 
 export default async function HomePage() {
   const response = await getPostRecent();
@@ -96,12 +95,12 @@ export default async function HomePage() {
               </p>
               <div className="mt-4 flex gap-4 justify-center md:justify-start">
                 <Link href="/about">
-                  <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                  <button className="px-4 py-2 bg-green-600 text-white text-sm rounded-lg hover:bg-green-700 transition-colors">
                     Who is Hailey?!
                   </button>
                 </Link>
                 <Link href="/blog">
-                  <button className="px-4 py-2 border border-green-600 text-green-600 rounded-lg hover:bg-green-100 transition-colors">
+                  <button className="px-4 py-2 border border-green-600 text-green-600 text-sm rounded-lg hover:bg-green-100 transition-colors">
                     View Blog
                   </button>
                 </Link>
@@ -159,36 +158,21 @@ export default async function HomePage() {
             <h2 className="text-3xl mb-2">Recent Posts</h2>
             <p className="text-gray-600">최근 작성된 포스트를 확인해보세요!</p>
           </div>
-          <div className="flex w-full px-4 py-3 md:pl-6 xl:pl-[calc((100%-1150px)/2)] gap-4 overflow-x-scroll items-center self-end">
-            {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
-              <Link
-                href={`posts/${_id}`}
-                key={_id}
-                className="bg-white flex flex-col gap-2 pb-2 w-[230px] justify-between rounded-lg button-hover">
-                <div className="relative">
-                  <div className="w-[230px] h-[140px] overflow-hidden">
-                    <Image
-                      width={230}
-                      height={140}
-                      className="rounded-t-lg rounded-tr-lg object-cover"
-                      src={thumbnail || ""}
-                      alt={"thumbnail"}
-                    />
-                  </div>
-                  <span className="text-sm bg-white border border-solid box-border p-3 pt-[1px] pb-[1px] rounded-xl text-green-600 absolute right-2 top-2">
-                    {tagConverter(tag, true)}
-                  </span>
-
-                  <span className="text-[15px] font-normal text-overflow-1 pl-2 pr-2">{title}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm pl-2">{dayjs.tz(createdAt).format("YYYY년 MM월 DD일")}</span>
-                </div>
-              </Link>
-            ))}
-            <Link href="/blog">
-              <button className="min-w-40 text-base text-gray-700 underline hover:text-green-700 transition-colors">ALL POSTS... </button>
-            </Link>
+          <div className="w-full overflow-x-auto">
+            <div className="flex w-full px-4 py-3 md:pl-6 xl:pl-[calc((100%-1150px)/2)] gap-4 items-center min-w-max">
+            {data.length > 0 ? (
+              <>
+                {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
+                  <RecentPostCard key={_id} _id={_id} title={title} tag={tag} thumbnail={thumbnail} createdAt={createdAt} />
+                ))}
+                <Link href="/blog">
+                  <button className="min-w-40 text-base text-gray-700 underline hover:text-green-700 transition-colors">ALL POSTS... </button>
+                </Link>
+              </>
+            ) : (
+              <div className="w-full text-center p-6 text-gray-500">최근 포스트가 없습니다.</div>
+            )}
+            </div>
           </div>
         </section>
 

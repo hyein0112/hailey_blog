@@ -1,7 +1,7 @@
 "use client";
 
-import MyEditor from "@/components/Editor";
 import React, { useEffect, useState } from "react";
+import MyEditor from "./components/Editor";
 
 import * as S from "./style";
 import Link from "next/link";
@@ -25,6 +25,7 @@ export default function WritePage() {
         createdAt: dayjs.tz().format("YYYY-MM-DD HH:mm:ss"),
       });
       console.log(data);
+      router.replace("/blog");
     } catch (e) {
       console.error(e);
     }
@@ -46,7 +47,7 @@ export default function WritePage() {
       <S.Container>
         <MyEditor />
         <S.BottomButtonBox>
-          <Link href={"/"}>
+          <Link href={"/blog"}>
             <S.BottomButton isSubmit={false}>취소</S.BottomButton>
           </Link>
           <S.BottomButton onClick={handleClickPost} isSubmit={true}>

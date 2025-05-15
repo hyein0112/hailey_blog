@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { SideMenu } from "@/components";
+import SideMenu from "./sideMenu";
 import Logo from "@/assets/logo.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 
@@ -27,12 +27,12 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
               <ul className="flex h-full items-center gap-2 md:gap-1">
                 <li>
                   <Link href="/blog">
-                    <button className="hidden md:flex justify-center items-center p-1 text-base">Blog</button>
+                    <button className="hidden md:flex justify-center items-center p-1 text-base text-black">Blog</button>
                   </Link>
                 </li>
                 <li>
                   <Link href="/about">
-                    <button className="hidden md:flex justify-center items-center p-1 text-base">About</button>
+                    <button className="hidden md:flex justify-center items-center p-1 text-base text-black">About</button>
                   </Link>
                 </li>
                 <button className="md:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>

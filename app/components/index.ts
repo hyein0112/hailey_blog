@@ -1,3 +1,5 @@
-export { default as PostBox } from "./postBox";
-export { default as PostContent } from "./PostContent";
-export { default as SideMenu } from "./sideMenu";
+export { default as Header } from "./header";
+export { default as Divider } from "./divider";
+export { default as ProgressBar } from "./progressBar";
+export { default as Giscus } from "./Giscus";
+export { default as Pagination } from "./pagination";

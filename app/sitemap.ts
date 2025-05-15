@@ -2,6 +2,8 @@ import { MetadataRoute } from "next";
 import { getPostAll } from "./api/posts/getPostList";
 import { WithId, Document } from "mongodb";
 
+export const revalidate = 3600; // 1 hour
+
 interface Post extends WithId<Document> {
   createdAt: string;
 }

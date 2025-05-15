@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { Divider } from "../common";
+import { Divider } from "@/components";
 import { CgClose } from "react-icons/cg";
 
 export default function SideMenu({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
