@@ -15,18 +15,18 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
   return (
     <div
       onClick={onClick}
-      className="bg-white rounded-lg p-4 cursor-pointer hover:shadow-md transition-shadow">
+      className="group bg-white rounded-lg p-4 cursor-pointer shadow-md hover:shadow-xl transition-shadow duration-300">
       <div className="flex flex-col md:flex-row justify-between gap-4">
         <div className="flex-1">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="text-lg font-semibold">{project.title}</h3>
+            <h3 className="text-lg font-semibold group-hover:text-green-600 transition-colors duration-300">{project.title}</h3>
             <div className="flex gap-2">
               {project.link && (
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-gray-600 hover:text-green-700 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                   title="GitHub Repository"
                 >
@@ -38,7 +38,7 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
                   href={project.demoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-gray-900 transition-colors"
+                  className="text-gray-600 hover:text-green-700 transition-colors"
                   onClick={(e) => e.stopPropagation()}
                   title="Live Demo"
                 >
