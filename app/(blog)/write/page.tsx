@@ -24,6 +24,7 @@ export default function WritePage() {
         thumbnail: postData?.thumbnail,
         createdAt: dayjs.tz().format("YYYY-MM-DD HH:mm:ss"),
       });
+      console.log(data);
       router.replace("/blog");
     } catch (e) {
       console.error(e);
