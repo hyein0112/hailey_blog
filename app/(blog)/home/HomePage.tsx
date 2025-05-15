@@ -1,4 +1,4 @@
-import { Header } from "@/components/common";
+import { Header } from "@/components";
 import dayjs from "@/lib/dayjs";
 import tagConverter from "@/lib/tagConverter";
 import Image from "next/image";

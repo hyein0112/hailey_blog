@@ -1,7 +1,7 @@
 import { getMetadata } from "@/lib/metaData";
 import { getPostList } from "@/api/posts/getPostList";
 import { PostList } from "@/types/post";
-import { Header, Pagination } from "@/components/common";
+import { Header, Pagination } from "@/components";
 import BlogContent from "./blogPage";
 
 async function getPostListData(searchTag: string, page: number = 1): Promise<PostList> {

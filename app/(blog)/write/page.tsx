@@ -1,7 +1,7 @@
 "use client";
 
-import MyEditor from "@/components/Editor";
 import React, { useEffect, useState } from "react";
+import MyEditor from "./components/Editor";
 
 import * as S from "./style";
 import Link from "next/link";

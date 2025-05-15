@@ -118,9 +118,6 @@ export const ImageBox = styled.div`
     border-radius: 12px;
     aspect-ratio: 8 / 5;
   }
-  & > div {
-    background-color: var(--gray-100);
-  }
 
   @media screen and (max-width: 500px) {
     width: 100%;

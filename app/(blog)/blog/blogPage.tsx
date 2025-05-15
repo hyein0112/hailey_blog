@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostList } from "@/types/post";
-import { Divider } from "@/components/common";
-import { PostBox } from "@/components";
-import * as S from "./style";
+import { Divider } from "@/components";
 import tagConverter from "@/lib/tagConverter";
+
+import PostBox from "./components/postBox";
+import * as S from "./style";
 
 export default function BlogContent({ blogList }: { blogList: PostList }) {
   const router = useRouter();

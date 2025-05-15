@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { SideMenu } from "@/components";
+import SideMenu from "./sideMenu";
 import Logo from "@/assets/logo.svg";
 import { RxHamburgerMenu } from "react-icons/rx";
 

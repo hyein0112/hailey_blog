@@ -25,7 +25,7 @@ export default function PostBox({ post }: { post?: PostData }) {
         </S.TagAndDateBox>
       </S.TextBox>
       <S.ImageBox>
-        <div className="animate-pulse w-[230px] h-[230px]" />
+        <div className="bg-border2 w-[230px] h-[160px] animate-pulse rounded-md" />
       </S.ImageBox>
     </S.PostBox>
   ) : (

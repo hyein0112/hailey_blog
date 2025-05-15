@@ -4,7 +4,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import { PostData } from "@/types/post";
 
-import { Divider } from "../common";
+import { Divider } from "@/components";
 import dayjs from "@/lib/dayjs";
 import tagConverter from "@/lib/tagConverter";
 

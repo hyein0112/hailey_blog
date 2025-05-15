@@ -1,6 +1,6 @@
 'use client'
 
-import { Divider, Header } from "@/components/common";
+import { Divider, Header } from "@/components";
 import Image from "next/image";
 import { IoLogoGithub, IoMdMail } from "react-icons/io";
 import { FaBriefcase, FaProjectDiagram } from "react-icons/fa";
