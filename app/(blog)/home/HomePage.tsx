@@ -1,13 +1,11 @@
 import { Header } from "@/components";
-import dayjs from "@/lib/dayjs";
-import tagConverter from "@/lib/tagConverter";
 import Image from "next/image";
 import Link from "next/link";
 import { getPostRecent } from "@/api/posts/getPostList";
 import { PostData } from "@/types/post";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiNestjs, SiMysql } from "react-icons/si";
-import RecentPostCard from "./components/recentPostCard";
+import RecentPostCard from "./components/RecentPostCard";
 
 export default async function HomePage() {
   const response = await getPostRecent();
