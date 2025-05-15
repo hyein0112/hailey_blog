@@ -9,7 +9,7 @@ export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }
     <Link
       href={`posts/${_id}`}
       key={_id}
-      className="bg-white w-[280px] h-[280px] rounded-xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
+      className="group bg-white w-[280px] h-[280px] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
     >
       <div className="relative">
         <div className="w-full h-[160px] overflow-hidden border border-gray-100">
@@ -36,4 +36,4 @@ export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }
       </div>
     </Link>
   );
-}
+} 
