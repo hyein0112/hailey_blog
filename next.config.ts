@@ -4,7 +4,12 @@ import type { Configuration } from "webpack";
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["pub-24c7455649c447158e9e42357ec70220.r2.dev"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
   webpack: (config: Configuration, { isServer }: { isServer: boolean }) => {
     if (!isServer) {
