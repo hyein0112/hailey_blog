@@ -1,28 +1,31 @@
-'use client'
+"use client";
 
 import { Divider, Header } from "@/components";
 import Image from "next/image";
 import { IoLogoGithub, IoMdMail } from "react-icons/io";
-import { FaBriefcase, FaProjectDiagram } from "react-icons/fa";
-import ProjectCard from './components/ProjectCard';
-import ProjectModal from './components/ProjectModal';
-import { Project } from './types';
-import { useState, useEffect } from 'react';
-import { companies } from './data/companies';
-import { personalProjects } from './data/personalProjects';
+import { FaBook, FaBriefcase, FaProjectDiagram } from "react-icons/fa";
+import ProjectCard from "./components/ProjectCard";
+import ProjectModal from "./components/ProjectModal";
+import { Project } from "./types";
+import { useState, useEffect } from "react";
+import { companies } from "./data/companies";
+import { personalProjects } from "./data/personalProjects";
+import PresentationCard from "./components/PresentationCard";
+import PDFModal from "./components/PDFModal";
+import { studyList } from "./data/studyList";
 
 export default function AboutPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
+  const [selectedPresentation, setSelectedPresentation] = useState<(typeof studyList)[0] | null>(null);
   useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
 
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [selectedProject]);
 
@@ -89,14 +92,12 @@ export default function AboutPage() {
             <FaBriefcase className="text-2xl text-green-600" />
             <h2 className="text-3xl font-bold">Work Experience</h2>
           </div>
-          
+
           <div className="space-y-12">
             {companies.map((company, index) => (
               <div key={company.id} className="relative">
-                {index !== companies.length - 1 && (
-                  <div className="absolute hidden md:block left-16 top-16 bottom-0 w-0.5 bg-gray-300" />
-                )}
-                
+                {index !== companies.length - 1 && <div className="absolute hidden md:block left-16 top-16 bottom-0 w-0.5 bg-gray-300" />}
+
                 <div className="flex flex-col md:flex-row gap-4 md:gap-10">
                   <div className="w-full md:w-32 text-left md:text-center flex-shrink-0">
                     <div className="sticky top-8">
@@ -110,15 +111,10 @@ export default function AboutPage() {
                         <h3 className="text-2xl font-bold">{company.name}</h3>
                         <p className="text-gray-600 mt-1">{company.position}</p>
                       </div>
-                      
+
                       <div className="space-y-4">
                         {company.projects.map((project) => (
-                          <ProjectCard
-                            key={project.id}
-                            project={project}
-                            onClick={() => setSelectedProject(project)}
-                            variant="company"
-                          />
+                          <ProjectCard key={project.id} project={project} onClick={() => setSelectedProject(project)} variant="company" />
                         ))}
                       </div>
                     </div>
@@ -135,25 +131,44 @@ export default function AboutPage() {
             <FaProjectDiagram className="text-2xl text-green-600" />
             <h2 className="text-3xl font-bold">Personal Projects</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {personalProjects.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onClick={() => setSelectedProject(project)}
-                variant="personal"
-              />
+              <ProjectCard key={project.id} project={project} onClick={() => setSelectedProject(project)} variant="personal" />
+            ))}
+          </div>
+        </section>
+
+        {/* Study */}
+        <section className="flex flex-col gap-8 mb-8">
+          <div className="flex items-center gap-3">
+            <FaBook className="text-2xl text-green-600" />
+            <h2 className="text-3xl font-bold">Study</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {studyList.map((item) => (
+              <PresentationCard key={item.id} url={item.link} title={item.title} onOpen={() => setSelectedPresentation(item)} />
             ))}
           </div>
         </section>
       </main>
 
+      {/* Study Modal */}
+      {selectedPresentation && (
+        <PDFModal
+          isOpen={!!selectedPresentation}
+          url={selectedPresentation.link}
+          title={selectedPresentation.title}
+          onClose={() => setSelectedPresentation(null)}
+        />
+      )}
+
+      {/* Project Modal */}
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
-          variant={selectedProject.id.startsWith('personal') ? 'personal' : 'company'}
+          variant={selectedProject.id.startsWith("personal") ? "personal" : "company"}
         />
       )}
     </div>
