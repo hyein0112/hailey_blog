@@ -82,7 +82,7 @@ export default function PresentationCard({ url, title, onOpen }: PresentationCar
       </div>
       {/* 제목 */}
       <div className="w-full px-4 py-3 bg-white">
-        <span className="text-base font-semibold group-hover:text-green-600 transition-all duration-300">{title}</span>
+        <span className="text-base font-semibold text-black group-hover:text-green-600 transition-all duration-300">{title}</span>
       </div>
     </button>
   );

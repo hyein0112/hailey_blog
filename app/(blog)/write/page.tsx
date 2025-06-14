@@ -47,7 +47,7 @@ export default function WritePage() {
       <S.Container>
         <MyEditor />
         <S.BottomButtonBox>
-          <Link href={"/blog"}>
+          <Link href={"/blog"} prefetch={true}>
             <S.BottomButton isSubmit={false}>취소</S.BottomButton>
           </Link>
           <S.BottomButton onClick={handleClickPost} isSubmit={true}>
