@@ -35,7 +35,7 @@ export default function SideMenu({ isOpen, onClose }: { isOpen: boolean; onClose
             <li className="py-4 px-6 text-text3 font-normal hover:font-semibold cursor-pointer">Home</li>
           </Link>
           <Divider width="100%" color="border1" />
-          <Link href="/blog" onClick={onClose}>
+          <Link href="/blog" onClick={onClose} prefetch={true}>
             <li className="py-4 px-6 text-text3 font-normal hover:font-semibold cursor-pointer">Blog</li>
           </Link>
           <Divider width="100%" color="border1" />

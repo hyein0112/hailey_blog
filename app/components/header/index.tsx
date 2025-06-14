@@ -26,7 +26,7 @@ export default function Header({ isDetail }: { isDetail: boolean }) {
             <nav className="">
               <ul className="flex h-full items-center gap-2 md:gap-1">
                 <li>
-                  <Link href="/blog">
+                  <Link href="/blog" prefetch={true}>
                     <button className="hidden md:flex justify-center items-center p-1 text-base text-black">Blog</button>
                   </Link>
                 </li>
