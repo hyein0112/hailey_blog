@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Container = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ export const MenuTapBox = styled.div`
   justify-content: flex-start;
 `;
 
-export const TapButton = styled("button")<{ isTap?: boolean }>`
+export const TapButton = styled(Link)<{ $isTap?: boolean }>`
   min-width: 100px;
   padding: 8px;
   border-radius: 6px;
@@ -39,11 +40,12 @@ export const TapButton = styled("button")<{ isTap?: boolean }>`
   box-sizing: border-box;
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: 500;
-  ${({ isTap, theme }) => isTap && `background: ${theme.colors.green600} ; color: ${theme.colors.background1};`}
+  text-align: center;
+  ${({ $isTap, theme }) => $isTap && `background: ${theme.colors.green600}; color: ${theme.colors.background1};`}
   transition: all 0.3s;
 
   &:hover {
-    ${({ isTap, theme }) => isTap || `background: ${theme.colors.green600}; color: ${theme.colors.background1}`};
+    ${({ $isTap, theme }) => $isTap || `background: ${theme.colors.green600}; color: ${theme.colors.background1};`}
   }
 `;
 
