@@ -31,7 +31,9 @@ export const MenuTapBox = styled.div`
   justify-content: flex-start;
 `;
 
-export const TapButton = styled(Link)<{ $isTap?: boolean }>`
+export const TapButton = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "$isTap",
+})<{ $isTap?: boolean }>`
   min-width: 100px;
   padding: 8px;
   border-radius: 6px;
