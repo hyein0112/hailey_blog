@@ -69,14 +69,11 @@ export async function getPostAll() {
     return NextResponse.json({ error: "서버 오류가 발생했습니다." }, { status: 500 });
   }
 }
-
 export async function getAllTags() {
   try {
-    const posts = await db
-      .collection("posts")
-      .find({}, { projection: { tag: 1 } })
-      .toArray();
-    const tags = [...new Set(posts.map((post) => post.tag))];
+    const tags = await db.collection("posts").distinct("tag");
+    // 알파벳·한글 순서 정렬로 UI 일관성 유지
+    tags.sort();
     return NextResponse.json(tags);
   } catch (e) {
     console.error(e);
