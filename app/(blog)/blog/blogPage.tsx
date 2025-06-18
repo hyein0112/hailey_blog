@@ -13,7 +13,7 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 300);
   }, [blogList]);
 
   return (
@@ -23,7 +23,7 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
         <p className="text-gray-600 text-base md:text-lg">공부한 개념을 온전히 이해하기 위해 기록합니다!</p>
       </section>
 
-      <TagList currentTag={blogList.searchTag} />
+      <TagList tags={blogList.tags} currentTag={blogList.searchTag} />
 
       <Divider margin="0 0 16px 0" />
 
