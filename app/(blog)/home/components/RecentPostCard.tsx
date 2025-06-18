@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "@/lib/dayjs";
-import tagConverter from "@/lib/tagConverter";
 import { PostData } from "@/types/post";
 
 export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }: Omit<PostData, "content">) {

@@ -6,7 +6,6 @@ import { PostData } from "@/types/post";
 
 import { Divider } from "@/components";
 import dayjs from "@/lib/dayjs";
-import tagConverter from "@/lib/tagConverter";
 
 // Highlight.js 설정
 hljs.configure({

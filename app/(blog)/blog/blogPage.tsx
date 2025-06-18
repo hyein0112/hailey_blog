@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PostList } from "@/types/post";
 import { Divider } from "@/components";
-import tagConverter from "@/lib/tagConverter";
 
 import PostBox from "./components/PostBox";
 import * as S from "./style";

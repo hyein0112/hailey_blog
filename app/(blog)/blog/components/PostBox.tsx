@@ -8,7 +8,6 @@ import removeMd from "remove-markdown-and-html";
 import dayjs from "@/lib/dayjs";
 
 import { PostData } from "@/types/post";
-import tagConverter from "@/lib/tagConverter";
 
 export default function PostBox({ post }: { post?: PostData }) {
   return !post ? (
