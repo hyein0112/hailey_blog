@@ -25,7 +25,7 @@ export default function TagList({ currentTag }: { currentTag: string }) {
   if (isLoading) {
     return (
       <S.MenuTapBox>
-        <S.TapButton $isTap={currentTag === "all"} href="/blog?tag=all" className="mb-2">
+        <S.TapButton $isTap={currentTag === "all"} href="/blog?tag=all" prefetch={true} className="mb-2">
           All
         </S.TapButton>
         {[1, 2, 3].map((i) => (
