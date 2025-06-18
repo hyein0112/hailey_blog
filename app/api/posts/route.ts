@@ -1,14 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getPostList, getAllTags } from "./getPostList";
+import { getPostList } from "./getPostList";
 
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams;
-    const type = searchParams.get("type");
-
-    if (type === "tags") {
-      return getAllTags();
-    }
 
     const page = parseInt(searchParams.get("page") || "1");
     let searchTag = searchParams.get("searchTag") || "";
