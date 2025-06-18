@@ -28,9 +28,6 @@ export default function TagList({ currentTag }: { currentTag: string }) {
         <S.TapButton $isTap={currentTag === "all"} href="/blog?tag=all" prefetch={true} className="mb-2">
           All
         </S.TapButton>
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="w-20 h-8 bg-gray-200 rounded-full animate-pulse" />
-        ))}
       </S.MenuTapBox>
     );
   }
