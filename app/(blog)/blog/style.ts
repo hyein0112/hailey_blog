@@ -17,11 +17,17 @@ export const ContentBox = styled.main`
 `;
 
 export const MenuTapBox = styled.div`
-  width: 100%;
-  overflow-x: auto;
   display: flex;
-  gap: 12px;
+  gap: 8px;
   padding: 8px 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
 export const TapButton = styled("button")<{ isTap?: boolean }>`

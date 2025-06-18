@@ -13,6 +13,20 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
   const router = useRouter();
   const [tag, setTag] = useState(blogList.searchTag);
   const [isLoading, setIsLoading] = useState(true);
+  const [allTags, setAllTags] = useState<string[]>([]);
+
+  useEffect(() => {
+    const fetchTags = async () => {
+      try {
+        const response = await fetch("/api/posts?type=tags");
+        const tags = await response.json();
+        setAllTags(tags);
+      } catch (error) {
+        console.error("태그 로딩 실패:", error);
+      }
+    };
+    fetchTags();
+  }, []);
 
   useEffect(() => {
     setTag(blogList.searchTag);
@@ -37,21 +51,17 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
         <S.TapButton isTap={tag === "all"} onClick={() => handleMove("all")}>
           All
         </S.TapButton>
-        <S.TapButton isTap={tag === "front"} onClick={() => handleMove("front")}>
-          FrontEnd
-        </S.TapButton>
-        <S.TapButton isTap={tag === "back"} onClick={() => handleMove("back")}>
-          BackEnd
-        </S.TapButton>
-        <S.TapButton isTap={tag === "etc"} onClick={() => handleMove("etc")}>
-          Etc
-        </S.TapButton>
+        {allTags.map((uniqueTag) => (
+          <S.TapButton key={uniqueTag} isTap={tag === uniqueTag} onClick={() => handleMove(uniqueTag)} className="mb-2">
+            {uniqueTag}
+          </S.TapButton>
+        ))}
       </S.MenuTapBox>
 
       <Divider margin="0 0 16px 0" />
-      
+
       <S.TapTitle>
-        📚 {tagConverter(tag)} ({blogList?.totalElement})
+        📚 {tag === "all" ? "All" : tag} ({blogList?.totalElement})
       </S.TapTitle>
 
       <S.PostContainer>
@@ -60,9 +70,7 @@ export default function BlogContent({ blogList }: { blogList: PostList }) {
         ) : (blogList?.data.length || 0) > 0 ? (
           blogList?.data.map((post) => <PostBox key={post._id} post={post} />)
         ) : (
-          <div className="text-center py-12 text-gray-500">
-            {tag}에 해당하는 포스트가 없어요
-          </div>
+          <div className="text-center py-12 text-gray-500">{tag}에 해당하는 포스트가 없어요</div>
         )}
       </S.PostContainer>
     </S.ContentBox>

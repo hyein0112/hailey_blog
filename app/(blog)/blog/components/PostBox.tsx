@@ -43,20 +43,12 @@ export default function PostBox({ post }: { post?: PostData }) {
         </div>
         <div className="w-full md:w-[calc(100%-230px)] h-full p-2 flex flex-col gap-2 justify-between order-2 md:order-1">
           <div className="h-full flex flex-col gap-3">
-            <h2 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-green-600 transition-colors">
-              {post.title}
-            </h2>
-            <p className="text-sm text-gray-600 line-clamp-2 md:line-clamp-3">
-              {removeMd(post.content)}
-            </p>
+            <h2 className="text-lg font-semibold text-gray-900 line-clamp-2 group-hover:text-green-600 transition-colors">{post.title}</h2>
+            <p className="text-sm text-gray-600 line-clamp-2 md:line-clamp-3">{removeMd(post.content)}</p>
           </div>
           <div className="flex gap-3 items-center">
-            <span className="text-sm font-semibold text-green-600">
-              {tagConverter(post.tag)}
-            </span>
-            <span className="text-sm text-gray-500">
-              {dayjs.tz(post.createdAt).format("YYYY년 MM월 DD일")}
-            </span>
+            <span className="text-sm font-semibold text-green-600">{post.tag}</span>
+            <span className="text-sm text-gray-500">{dayjs.tz(post.createdAt).format("YYYY년 MM월 DD일")}</span>
           </div>
         </div>
       </div>
