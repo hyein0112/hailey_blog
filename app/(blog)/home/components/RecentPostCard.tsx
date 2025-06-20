@@ -37,19 +37,21 @@ export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }
 
 export const RecentPostCardBox = () => {
   const [data, setData] = useState<PostData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("/api/posts/recent");
       const data: PostData[] = await response.json();
       setData(data);
+      setIsLoading(false);
     };
     fetchData();
   }, []);
 
   return (
     <div className="flex w-full px-4 py-3 md:pl-6 xl:pl-[calc((100%-1150px)/2)] gap-4 items-center min-w-max">
-      {data.length > 0 ? (
+      {data.length > 0 && !isLoading && (
         <>
           {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
             <RecentPostCard key={_id} _id={_id} title={title} tag={tag} thumbnail={thumbnail} createdAt={createdAt} />
@@ -58,9 +60,10 @@ export const RecentPostCardBox = () => {
             <button className="min-w-40 text-base text-gray-700 underline hover:text-green-700 transition-colors">ALL POSTS... </button>
           </Link>
         </>
-      ) : (
-        <div className="w-full text-center p-6 text-gray-500">최근 포스트가 없습니다.</div>
       )}
+
+      {isLoading && <div className="w-full text-center p-6 text-gray-500">로딩중...</div>}
+      {!isLoading && data.length === 0 && <div className="w-full text-center p-6 text-gray-500">최근 포스트가 없습니다.</div>}
     </div>
   );
 };

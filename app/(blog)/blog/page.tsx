@@ -8,7 +8,7 @@ export async function generateMetadata() {
 
 export default async function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense>
       <BlogPage />
     </Suspense>
   );
