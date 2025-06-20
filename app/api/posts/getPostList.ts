@@ -18,7 +18,7 @@ export async function getPostList(page: number, searchTag: string) {
       db.collection("posts").countDocuments(filter),
       db
         .collection("posts")
-        .aggregate([{ $sort: { createdAt: -1 } }, { $group: { _id: "$tag" } }, { $project: { _id: 0, tag: "$_id" } }])
+        .aggregate([{ $group: { _id: "$tag" } }, { $project: { _id: 0, tag: "$_id" } }, { $sort: { tag: 1 } }])
         .toArray(),
     ]);
 

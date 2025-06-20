@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "@/lib/dayjs";
 import { PostData } from "@/types/post";
+import { useEffect, useState } from "react";
 
 export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }: Omit<PostData, "content">) {
   return (
@@ -31,3 +34,33 @@ export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }
     </Link>
   );
 }
+
+export const RecentPostCardBox = () => {
+  const [data, setData] = useState<PostData[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch("/api/posts/recent");
+      const data: PostData[] = await response.json();
+      setData(data);
+    };
+    fetchData();
+  }, []);
+
+  return (
+    <div className="flex w-full px-4 py-3 md:pl-6 xl:pl-[calc((100%-1150px)/2)] gap-4 items-center min-w-max">
+      {data.length > 0 ? (
+        <>
+          {data.map(({ _id, title, tag, thumbnail, createdAt }) => (
+            <RecentPostCard key={_id} _id={_id} title={title} tag={tag} thumbnail={thumbnail} createdAt={createdAt} />
+          ))}
+          <Link href="/blog" prefetch={true}>
+            <button className="min-w-40 text-base text-gray-700 underline hover:text-green-700 transition-colors">ALL POSTS... </button>
+          </Link>
+        </>
+      ) : (
+        <div className="w-full text-center p-6 text-gray-500">최근 포스트가 없습니다.</div>
+      )}
+    </div>
+  );
+};

@@ -1,45 +1,38 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Pagination } from "@/components";
+import BlogContent from "./blogContent";
 import { PostList } from "@/types/post";
-import { Divider } from "@/components";
-import PostBox from "./components/PostBox";
-import TagList from "./components/TagList";
-import * as S from "./style";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
-export default function BlogContent({ blogList }: { blogList: PostList }) {
-  const [isLoading, setIsLoading] = useState(true);
+async function getPostListData(searchTag: string, page: number = 1): Promise<PostList> {
+  const response = await fetch(`/api/posts?page=${page}&searchTag=${searchTag}`);
+  return await response.json();
+}
+
+export default function BlogPage() {
+  const searchParams = useSearchParams();
+  const [data, setData] = useState<PostList | null>(null);
+  const tag = searchParams.get("tag") || "all";
+  const page = parseInt(searchParams.get("page") || "1");
 
   useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 300);
-  }, [blogList]);
+    const fetchData = async () => {
+      const data = await getPostListData(tag, page);
+      setData(data);
+    };
+    fetchData();
+  }, [tag, page]);
 
   return (
-    <S.ContentBox>
-      <section className="space-y-2">
-        <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
-        <p className="text-gray-600 text-base md:text-lg">공부한 개념을 온전히 이해하기 위해 기록합니다!</p>
-      </section>
-
-      <TagList tags={blogList.tags} currentTag={blogList.searchTag} />
-
-      <Divider margin="0 0 16px 0" />
-
-      <S.TapTitle>
-        📚 {blogList.searchTag === "all" ? "All" : blogList.searchTag} ({blogList?.totalElement})
-      </S.TapTitle>
-
-      <S.PostContainer>
-        {isLoading ? (
-          [1, 1, 1].map((_, i) => <PostBox key={i} />)
-        ) : (blogList?.data.length || 0) > 0 ? (
-          blogList?.data.map((post) => <PostBox key={post._id} post={post} />)
-        ) : (
-          <div className="text-center py-12 text-gray-500">{blogList.searchTag}에 해당하는 포스트가 없어요</div>
-        )}
-      </S.PostContainer>
-    </S.ContentBox>
+    <div className="flex flex-col h-full">
+      <BlogContent blogList={data} />
+      {data?.totalElement && data?.totalElement > 0 ? (
+        <div className="self-center mt-8 mb-8">
+          <Pagination totalPages={data.totalPage} tag={tag} pageIndex={data.page - 1} currentPage={page} />
+        </div>
+      ) : null}
+    </div>
   );
 }
