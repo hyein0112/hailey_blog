@@ -14,7 +14,17 @@ async function getPostData(id: string): Promise<PostData> {
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const data = await getPostData(id);
-  return getMetadata({ title: data.title, description: removeMd(data.content), ogImage: data.thumbnail });
+
+  // 마크다운 제거 및 설명 길이 제한
+  const cleanContent = removeMd(data.content).replace(/\s+/g, " ").trim();
+  const description = cleanContent.length > 160 ? cleanContent.substring(0, 157) + "..." : cleanContent;
+
+  return getMetadata({
+    title: data.title,
+    description: description,
+    ogImage: data.thumbnail,
+    asPath: `/posts/${id}`,
+  });
 }
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
