@@ -52,7 +52,12 @@ export async function getPostOne(id: string) {
 
 export async function getPostRecent() {
   try {
-    const list = await db.collection("posts").find().sort({ createdAt: -1 }).limit(4).toArray();
+    const list = await db
+      .collection("posts")
+      .find({}, { projection: { content: 0 } })
+      .sort({ createdAt: -1 })
+      .limit(4)
+      .toArray();
     if (!list) return NextResponse.json({ error: "데이터가 존재하지 않습니다" }, { status: 404 });
     return NextResponse.json(list);
   } catch (e) {

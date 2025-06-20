@@ -122,7 +122,7 @@ export default async function HomePage() {
             <h2 className="text-3xl mb-2">Recent Posts</h2>
             <p className="text-gray-600">최근 작성된 포스트를 확인해보세요!</p>
           </div>
-          <div className="w-full overflow-x-auto">
+          <div className="w-full overflow-x-auto [scrollbar-width:none]">
             <div className="flex w-full px-4 py-3 md:pl-6 xl:pl-[calc((100%-1150px)/2)] gap-4 items-center min-w-max">
               {data.length > 0 ? (
                 <>
