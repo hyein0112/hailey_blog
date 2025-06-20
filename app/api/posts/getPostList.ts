@@ -7,7 +7,7 @@ export async function getPostList(page: number, searchTag: string) {
     const pageSize = 6;
     const filter = searchTag === "all" ? {} : { tag: { $regex: searchTag } };
 
-    const [items, totalElement] = await Promise.all([
+    const [items, totalElement, allPosts] = await Promise.all([
       db
         .collection("posts")
         .find(filter)
@@ -16,7 +16,20 @@ export async function getPostList(page: number, searchTag: string) {
         .limit(pageSize)
         .toArray(),
       db.collection("posts").countDocuments(filter),
+      db
+        .collection("posts")
+        .find({}, { projection: { tag: 1, createdAt: 1 } })
+        .sort({ createdAt: -1 })
+        .toArray(),
     ]);
+
+    // 최근순으로 태그 정렬 (중복 없이)
+    const tags: string[] = [];
+    for (const post of allPosts) {
+      if (post.tag && !tags.includes(post.tag)) {
+        tags.push(post.tag);
+      }
+    }
 
     const response = {
       page,
@@ -25,6 +38,7 @@ export async function getPostList(page: number, searchTag: string) {
       totalElement,
       searchTag,
       data: items,
+      tags, // 최근순 태그 리스트
     };
 
     return NextResponse.json(response);

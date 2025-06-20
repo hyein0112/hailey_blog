@@ -6,7 +6,6 @@ import { PostData } from "@/types/post";
 
 import { Divider } from "@/components";
 import dayjs from "@/lib/dayjs";
-import tagConverter from "@/lib/tagConverter";
 
 // Highlight.js 설정
 hljs.configure({
@@ -39,7 +38,7 @@ export default function PostContent({ content }: { content: PostData }) {
       <h1>{content.title}</h1>
       <div className="flex items-center gap-3 py-3 pb-5 text-sm">
         {/* TagAndDate */}
-        <span className="text-green-600 font-semibold bg-gray-100 px-2 py-1 rounded-lg">{tagConverter(content.tag)}</span>
+        <span className="text-green-600 font-semibold bg-gray-100 px-2 py-1 rounded-lg">{content.tag}</span>
         <span className="-mt-[3px] text-gray-700">{dayjs.tz(content.createdAt).format("YYYY년 MM월 DD일")}</span>
       </div>
       <Divider height="1px" margin="8px 0 24px 0" />

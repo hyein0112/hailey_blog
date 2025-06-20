@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Container = styled.div`
   display: flex;
@@ -17,14 +18,22 @@ export const ContentBox = styled.main`
 `;
 
 export const MenuTapBox = styled.div`
-  width: 100%;
-  overflow-x: auto;
   display: flex;
-  gap: 12px;
+  gap: 8px;
   padding: 8px 0;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  flex-wrap: wrap;
+  justify-content: flex-start;
 `;
 
-export const TapButton = styled("button")<{ isTap?: boolean }>`
+export const TapButton = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "$isTap",
+})<{ $isTap?: boolean }>`
   min-width: 100px;
   padding: 8px;
   border-radius: 6px;
@@ -33,11 +42,12 @@ export const TapButton = styled("button")<{ isTap?: boolean }>`
   box-sizing: border-box;
   font-size: ${({ theme }) => theme.fontSize.sm};
   font-weight: 500;
-  ${({ isTap, theme }) => isTap && `background: ${theme.colors.green600} ; color: ${theme.colors.background1};`}
+  text-align: center;
+  ${({ $isTap, theme }) => $isTap && `background: ${theme.colors.green600}; color: ${theme.colors.background1};`}
   transition: all 0.3s;
 
   &:hover {
-    ${({ isTap, theme }) => isTap || `background: ${theme.colors.green600}; color: ${theme.colors.background1}`};
+    ${({ $isTap, theme }) => $isTap || `background: ${theme.colors.green600}; color: ${theme.colors.background1};`}
   }
 `;
 
