@@ -1,7 +1,7 @@
 import { getMetadata } from "@/lib/metaData";
 import { getPostList } from "@/api/posts/getPostList";
 import { PostList } from "@/types/post";
-import { Header, Pagination } from "@/components";
+import { Pagination } from "@/components";
 import BlogContent from "./blogPage";
 import { Suspense } from "react";
 
@@ -14,6 +14,8 @@ export async function generateMetadata() {
   return getMetadata({ title: "Blog | Hailey's blog", description: "공부한 개념을 온전히 이해하기 위해 기록합니다!" });
 }
 
+export const revalidate = 3600; // 1시간마다 재검증
+
 export default async function Page({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const params = await searchParams;
   const tag = params.tag as string | undefined;
@@ -24,7 +26,6 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="flex flex-col h-full">
-        <Header isDetail={false} />
         <BlogContent blogList={data} />
         {data?.totalElement && data?.totalElement > 0 ? (
           <div className="self-center mt-8 mb-8">

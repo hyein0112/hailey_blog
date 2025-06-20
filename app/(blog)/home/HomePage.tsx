@@ -1,4 +1,3 @@
-import { Header } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import { getPostRecent } from "@/api/posts/getPostList";
@@ -53,7 +52,6 @@ export default async function HomePage() {
 
   return (
     <div className="flex h-full flex-col pb-10">
-      <Header isDetail={false} />
       <main className="self-center w-full flex flex-col items-center gap-[3vh]">
         {/* 프로필 섹션 */}
         <section className="w-full max-w-[1200px] p-4 md:p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">

@@ -1,6 +1,6 @@
 "use client";
 
-import { Divider, Header } from "@/components";
+import { Divider } from "@/components";
 import Image from "next/image";
 import { IoLogoGithub, IoMdMail } from "react-icons/io";
 import { FaBook, FaBriefcase, FaProjectDiagram } from "react-icons/fa";
@@ -31,7 +31,6 @@ export default function AboutPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header isDetail={false} />
       <main className="flex-1 self-center p-4 md:p-6 w-full max-w-[1200px] flex flex-col gap-12">
         <section className="mb-6">
           <div className="flex flex-col md:flex-row items-center justify-center mt-6 gap-6">

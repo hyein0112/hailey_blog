@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
+
 import { ClientWrapper } from "@/clientComponents";
 import { Noto_Sans_KR } from "next/font/google";
+import { Header } from "@/components";
 
 const notoSansKr = Noto_Sans_KR({
   subsets: ["latin"],
@@ -12,7 +14,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ko" suppressHydrationWarning={true} className={notoSansKr.variable}>
       <body>
-        <ClientWrapper>{children}</ClientWrapper>
+        <ClientWrapper>
+          <Header />
+          <main>{children}</main>
+        </ClientWrapper>
       </body>
     </html>
   );
