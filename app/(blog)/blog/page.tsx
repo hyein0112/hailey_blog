@@ -3,6 +3,7 @@ import { getPostList } from "@/api/posts/getPostList";
 import { PostList } from "@/types/post";
 import { Header, Pagination } from "@/components";
 import BlogContent from "./blogPage";
+import { Suspense } from "react";
 
 async function getPostListData(searchTag: string, page: number = 1): Promise<PostList> {
   const response = await getPostList(page, searchTag);
@@ -21,14 +22,16 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
   const data = await getPostListData(tag || "", page);
 
   return (
-    <div className="flex flex-col h-full">
-      <Header isDetail={false} />
-      <BlogContent blogList={data} />
-      {data?.totalElement && data?.totalElement > 0 ? (
-        <div className="self-center mt-8 mb-8">
-          <Pagination totalPages={data.totalPage} tag={tag || ""} pageIndex={data.page - 1} currentPage={page} />
-        </div>
-      ) : null}
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className="flex flex-col h-full">
+        <Header isDetail={false} />
+        <BlogContent blogList={data} />
+        {data?.totalElement && data?.totalElement > 0 ? (
+          <div className="self-center mt-8 mb-8">
+            <Pagination totalPages={data.totalPage} tag={tag || ""} pageIndex={data.page - 1} currentPage={page} />
+          </div>
+        ) : null}
+      </div>
+    </Suspense>
   );
 }

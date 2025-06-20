@@ -1,5 +1,6 @@
 import { getMetadata } from "@/lib/metaData";
 import AboutPage from "./AboutPage";
+import { Suspense } from "react";
 
 export async function generateMetadata() {
   return getMetadata({
@@ -10,5 +11,9 @@ export async function generateMetadata() {
 }
 
 export default function Page() {
-  return <AboutPage />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AboutPage />
+    </Suspense>
+  );
 }
