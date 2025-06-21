@@ -5,9 +5,9 @@ import { ObjectId } from "mongodb";
 export async function getPostList(page: number, searchTag: string) {
   try {
     const pageSize = 6;
-    const filter = searchTag === "all" ? {} : { tag: { $regex: searchTag } };
+    const filter = searchTag === "all" ? {} : { tag: searchTag };
 
-    const [items, totalElement, tags] = await Promise.all([
+    const [items, totalElement] = await Promise.all([
       db
         .collection("posts")
         .find(filter)
@@ -16,10 +16,6 @@ export async function getPostList(page: number, searchTag: string) {
         .limit(pageSize)
         .toArray(),
       db.collection("posts").countDocuments(filter),
-      db
-        .collection("posts")
-        .aggregate([{ $group: { _id: "$tag" } }, { $project: { _id: 0, tag: "$_id" } }, { $sort: { tag: 1 } }])
-        .toArray(),
     ]);
 
     const response = {
@@ -29,7 +25,6 @@ export async function getPostList(page: number, searchTag: string) {
       totalElement,
       searchTag,
       data: items,
-      tags: tags.map((t) => t.tag).filter(Boolean),
     };
 
     return NextResponse.json(response);

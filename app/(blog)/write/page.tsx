@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import usePost from "@/stores/usePost";
 import axios from "axios";
 import dayjs from "@/lib/dayjs";
+import { invalidatePostCache } from "@/lib/cache";
 
 export default function WritePage() {
   const router = useRouter();
@@ -25,6 +26,10 @@ export default function WritePage() {
         createdAt: dayjs.tz().format("YYYY-MM-DD HH:mm:ss"),
       });
       console.log(data);
+
+      // 새 포스트 작성 후 캐시 무효화
+      invalidatePostCache();
+
       router.replace("/blog");
     } catch (e) {
       console.error(e);

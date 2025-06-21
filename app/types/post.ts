@@ -14,5 +14,4 @@ export type PostList = {
   totalElement: number;
   searchTag: string;
   data: PostData[];
-  tags: string[];
 };

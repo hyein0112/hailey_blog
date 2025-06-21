@@ -3,8 +3,12 @@ import Link from "next/link";
 import { FaGithub, FaEnvelope } from "react-icons/fa";
 import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiNestjs, SiMysql } from "react-icons/si";
 import { RecentPostCardBox } from "./components/RecentPostCard";
+import { getRecentPosts } from "@/lib/posts";
 
 export default async function HomePage() {
+  // 서버에서 최근 포스트 데이터 가져오기
+  const recentPosts = await getRecentPosts();
+
   type TechStackItem = {
     name: string;
     icon?: React.ElementType;
@@ -118,7 +122,7 @@ export default async function HomePage() {
             <p className="text-gray-600">최근 작성된 포스트를 확인해보세요!</p>
           </div>
           <div className="w-full overflow-x-auto [scrollbar-width:none]">
-            <RecentPostCardBox />
+            <RecentPostCardBox posts={recentPosts} />
           </div>
         </section>
 

@@ -2,11 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
 import removeMd from "remove-markdown-and-html";
-
 import dayjs from "@/lib/dayjs";
-
 import { PostData } from "@/types/post";
 
 export default function PostBox({ post }: { post?: PostData }) {

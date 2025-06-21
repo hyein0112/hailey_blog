@@ -1,4 +1,4 @@
-import { Project } from '../types';
+import { Project } from "../types";
 
 export const personalProjects: Project[] = [
   {
@@ -31,34 +31,55 @@ export const personalProjects: Project[] = [
         "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202025-05-15%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.52.10.png",
         "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202025-05-15%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%201.52.31.png",
         "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/1747284024365nzkgi.png",
-        
-      ]
-    }
+      ],
+    },
   },
+
   {
     id: "personal2",
+    title: "Kiring",
+    period: "2025.04 - 2025.06",
+    shortDescription: "사내 커뮤니티 서비스",
+    description: "사내 커뮤니티를 활성화하기 위해 개발한 프로젝트입니다.\nNext.js 15 버전을 활용하여 개발하였습니다.",
+    mainTechStack: ["Next.js", "TypeScript", "Tailwind CSS", "Tanstack Query", "Zustand"],
+    subTechStack: ["Vercel", "Github Actions"],
+    link: "https://github.com/kitworks-kiring/kiring-frontend",
+    demoUrl: "https://kiring.vercel.app",
+    details: {
+      role: "프론트엔드 개발자",
+      screenshots: ["https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/1c45f4c9c9389091.jpg"],
+      achievements: [
+        "로그인 여부 판단하여 UI 분기 처리",
+        "맛집 좋아요 기능 구현",
+        "Optimistic UI 적용하여 사용자 경험 개선",
+        "Axios 인터셉터 구성 및 http 메서드 추상화",
+        "webpack 및 turbopack svg 파일 사용 설정",
+        "서울시 버스, 지하철, 자전거 등 공공 API 활용",
+        "API Routes 사용하여 key 노출 방지 및 blocked:mixed-content 에러 해결",
+        "Github Actions 사용 배포 자동화 워크플로우 작업",
+        "Docker 활용 ec2 배포",
+        "특정 브랜치 변경시 개인 레포지토리 Sync Fork 자동화",
+        "브랜치 변경사항 및 PR 관련 알림 디스코드 웹훅 연동",
+      ],
+    },
+  },
+  {
+    id: "personal3",
     title: "MindWay",
     period: "2023.03 - 2023.7",
     shortDescription: "교내 도서관 종합 서비스",
-    description: "기존의 학교 도서실 내 필요한 도서를 수기로 작성하여 신청하는 방법이 아닌,\n웹 사이트를 통해 신청할 수 있도록 하기 위해 개발된 서비스입니다.\n\n기존 불편한 도서실 이용 환경이 크게 개선될 것이라는 교사 및 학생들의 의견으로\n학생 졸업 작품 경진대회에서 3등을 수상하였습니다.",
+    description:
+      "기존의 학교 도서실 내 필요한 도서를 수기로 작성하여 신청하는 방법이 아닌,\n웹 사이트를 통해 신청할 수 있도록 하기 위해 개발된 서비스입니다.\n\n기존 불편한 도서실 이용 환경이 크게 개선될 것이라는 교사 및 학생들의 의견으로\n학생 졸업 작품 경진대회에서 3등을 수상하였습니다.",
     mainTechStack: ["React.js", "TypeScript", "Emotion", "Recoil", "Vercel"],
     subTechStack: [],
     demoUrl: "https://mindway-front-v2.vercel.app",
     details: {
       role: "프론트엔드 개발자",
-      achievements: [
-        "javascript -> typescript 마이그레이션",
-        "react-hook-form을 활용한 폼 관리",
-        "관리자 전용 백오피스 개발"
-      ],
-      challenges: [
-        "서버리스 아키텍처 설계",
-        "보안 취약점 해결"
-      ],
+      achievements: ["javascript -> typescript 마이그레이션", "react-hook-form을 활용한 폼 관리", "관리자 전용 백오피스 개발"],
       screenshots: [
         "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/1747202948819n1og1v.svg",
-        "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/1747202987493zwvbv.svg"
-      ]
-    }
+        "https://pub-24c7455649c447158e9e42357ec70220.r2.dev/hailey-blog/1747202987493zwvbv.svg",
+      ],
+    },
   },
-]; 
+];
