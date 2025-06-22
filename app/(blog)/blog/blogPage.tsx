@@ -1,6 +1,7 @@
 "use client";
 
 import BlogContent from "./blogContent";
+import { Pagination } from "@/components";
 import { PostList } from "@/types/post";
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
@@ -86,6 +87,13 @@ export default function BlogPage({ initialData, initialTags }: BlogPageProps) {
     <div className="flex h-full flex-col pb-10">
       <main className="self-center w-full flex flex-col items-center gap-[3vh]">
         <BlogContent blogList={data} tags={initialTags} currentTag={currentTag} isLoading={isLoading} onTagChange={handleTagChange} />
+
+        {/* 페이지네이션 */}
+        {data?.totalElement && data?.totalElement > 0 && data?.totalPage > 1 && (
+          <div className="self-center mt-8 mb-8">
+            <Pagination totalPages={data.totalPage} tag={currentTag} pageIndex={data.page - 1} currentPage={currentPage} />
+          </div>
+        )}
       </main>
     </div>
   );

@@ -24,25 +24,39 @@ const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pagin
     setCurrentPageGroup(Math.floor(pageIndex / 5) || 0);
   }, [pageIndex]);
 
+  // Disable 조건들
+  const isFirstPage = page === 1;
+  const isLastPage = page === totalPages;
+
   return (
     <div className="mt-4 flex justify-between gap-4">
       <div className="flex items-center gap-5">
         <div className="flex items-center justify-center dark:text-white mb-[-4px]">
           <Link
-            href={`/blog?tag=${tag}&page=${1}`}
+            href={isFirstPage ? {} : `/blog?searchTag=${tag}&page=${1}`}
             aria-label="leftDouble"
             type="button"
-            onClick={() => {
+            className={`transition-opacity ${isFirstPage ? "opacity-30 cursor-not-allowed" : "hover:opacity-70"}`}
+            onClick={(e) => {
+              if (isFirstPage) {
+                e.preventDefault();
+                return;
+              }
               setCurrentPageGroup(0);
               setCurrentPage(0);
             }}>
             <RiArrowLeftDoubleLine size={24} color="gray" />
           </Link>
           <Link
-            href={page == 1 ? {} : `/blog?tag=${tag}&page=${page - 1}`}
+            href={isFirstPage ? {} : `/blog?searchTag=${tag}&page=${page - 1}`}
             aria-label="left"
             type="button"
-            onClick={() => {
+            className={`transition-opacity ${isFirstPage ? "opacity-30 cursor-not-allowed" : "hover:opacity-70"}`}
+            onClick={(e) => {
+              if (isFirstPage) {
+                e.preventDefault();
+                return;
+              }
               console.log(currentPage);
               if (currentPageGroup === 0 && currentPage === 0) return;
               if (currentPage === 0) {
@@ -61,7 +75,7 @@ const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pagin
             pages[currentPageGroup]?.map((page, index) => {
               return (
                 <Link
-                  href={`/blog?tag=${tag}&page=${page}`}
+                  href={`/blog?searchTag=${tag}&page=${page}`}
                   key={`${page}_${index}`}
                   id="1"
                   type="button"
@@ -80,10 +94,15 @@ const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pagin
 
         <div className="flex items-center justify-center dark:text-white mb-[-4px]">
           <Link
-            href={page == totalPages ? {} : `/blog?tag=${tag}&page=${Number(page) + 1}`}
+            href={isLastPage ? {} : `/blog?searchTag=${tag}&page=${Number(page) + 1}`}
             type="button"
             aria-label="right"
-            onClick={() => {
+            className={`transition-opacity ${isLastPage ? "opacity-30 cursor-not-allowed" : "hover:opacity-70"}`}
+            onClick={(e) => {
+              if (isLastPage) {
+                e.preventDefault();
+                return;
+              }
               if (pages?.length && pages?.length > 0 ? pages[currentPageGroup][currentPage] === totalPages : false) return;
               if (currentPage === 4) {
                 setCurrentPageGroup((prev) => prev + 1);
@@ -95,10 +114,15 @@ const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pagin
             <RiArrowRightSLine color="gray" size={24} />
           </Link>
           <Link
-            href={`/blog?tag=${tag}&page=${totalPages}`}
+            href={isLastPage ? {} : `/blog?searchTag=${tag}&page=${totalPages}`}
             type="button"
             aria-label="rightDouble"
-            onClick={() => {
+            className={`transition-opacity ${isLastPage ? "opacity-30 cursor-not-allowed" : "hover:opacity-70"}`}
+            onClick={(e) => {
+              if (isLastPage) {
+                e.preventDefault();
+                return;
+              }
               if (pages?.length ? currentPageGroup === pages.length - 1 : false) return;
               else {
                 setCurrentPageGroup(pages?.length ? pages.length - 1 : 0);
