@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Project } from '../types';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { IoLogoGithub } from 'react-icons/io';
+import React from "react";
+import { Project } from "../types";
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { IoLogoGithub } from "react-icons/io";
 
 interface ProjectCardProps {
   project: Project;
   onClick: () => void;
-  variant?: 'company' | 'personal';
+  variant?: "company" | "personal";
 }
 
-export default function ProjectCard({ project, onClick, variant = 'personal' }: ProjectCardProps) {
+export default function ProjectCard({ project, onClick, variant = "personal" }: ProjectCardProps) {
   return (
     <div
       onClick={onClick}
@@ -28,8 +28,7 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-green-700 transition-colors"
                   onClick={(e) => e.stopPropagation()}
-                  title="GitHub Repository"
-                >
+                  aria-label={`${project.title} GitHub 저장소 열기`}>
                   <IoLogoGithub size={20} />
                 </a>
               )}
@@ -40,25 +39,21 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-green-700 transition-colors"
                   onClick={(e) => e.stopPropagation()}
-                  title="Live Demo"
-                >
+                  aria-label={`${project.title} 라이브 데모 열기`}>
                   <FaExternalLinkAlt size={18} />
                 </a>
               )}
             </div>
           </div>
           <p className="text-gray-700 mb-4 text-sm">{project.shortDescription}</p>
-          
-          {variant === 'company' ? (
+
+          {variant === "company" ? (
             <div className="space-y-2">
               <div>
                 <span className="text-xs font-medium text-gray-500">Main Stack</span>
                 <div className="flex flex-wrap gap-1 mt-1">
                   {project.mainTechStack.map((tech, index) => (
-                    <span
-                      key={index}
-                      className="px-2 py-0.5 bg-background2 rounded-full text-xs"
-                    >
+                    <span key={index} className="px-2 py-0.5 bg-background2 rounded-full text-xs">
                       {tech}
                     </span>
                   ))}
@@ -69,10 +64,7 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
                   <span className="text-xs font-medium text-gray-500">Sub Stack</span>
                   <div className="flex flex-wrap gap-1 mt-1">
                     {project.subTechStack.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-0.5 bg-background2 rounded-full text-xs"
-                      >
+                      <span key={index} className="px-2 py-0.5 bg-background2 rounded-full text-xs">
                         {tech}
                       </span>
                     ))}
@@ -83,10 +75,7 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
           ) : (
             <div className="flex flex-wrap gap-1">
               {[...project.mainTechStack, ...project.subTechStack].map((tech, index) => (
-                <span
-                  key={index}
-                  className="px-2 py-0.5 bg-background2 rounded-full text-xs"
-                >
+                <span key={index} className="px-2 py-0.5 bg-background2 rounded-full text-xs">
                   {tech}
                 </span>
               ))}
@@ -96,4 +85,4 @@ export default function ProjectCard({ project, onClick, variant = 'personal' }: 
       </div>
     </div>
   );
-} 
+}
