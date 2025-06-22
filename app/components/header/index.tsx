@@ -20,23 +20,26 @@ export default function Header() {
         <div className="w-full h-full flex flex-col items-center justify-center">
           <div className="w-full h-[70px] max-w-[1200px] px-6 flex justify-between items-center">
             <div className="flex items-center">
-              <Link href="/home">
+              <Link href="/home" aria-label="홈으로 이동">
                 <Logo />
               </Link>
             </div>
             <nav className="">
               <ul className="flex h-full items-center gap-2 md:gap-1">
                 <li>
-                  <Link href="/blog" prefetch={true}>
-                    <button className="hidden md:flex justify-center items-center p-1 text-base text-black">Blog</button>
+                  <Link href="/blog" prefetch={true} className="hidden md:flex justify-center items-center p-1 text-base text-text3">
+                    Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about">
-                    <button className="hidden md:flex justify-center items-center p-1 text-base text-black">About</button>
+                  <Link href="/about" className="hidden md:flex justify-center items-center p-1 text-base text-text3">
+                    About
                   </Link>
                 </li>
-                <button className="md:hidden flex justify-center items-center p-1" onClick={() => setShowSideMenu(true)}>
+                <button
+                  className="md:hidden flex justify-center items-center p-1"
+                  onClick={() => setShowSideMenu(true)}
+                  aria-label="메뉴 열기">
                   <RxHamburgerMenu size={24} className="text-border4" />
                 </button>
               </ul>

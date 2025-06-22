@@ -27,7 +27,7 @@ export default function SideMenu({ isOpen, onClose }: { isOpen: boolean; onClose
         className={`w-4/5 h-full flex flex-col items-center p-4 gap-6 bg-background2 rounded-tl rounded-bl overflow-y-auto shadow-[-2px_0_5px_rgba(0,0,0,0.1)] transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}>
-        <button className="self-start text-text3" onClick={onClose}>
+        <button className="self-start text-text3" onClick={onClose} aria-label="메뉴 닫기">
           <CgClose size={24} />
         </button>
         <ul className="flex flex-col w-full h-fit">

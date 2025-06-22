@@ -77,11 +77,10 @@ const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pagin
                 <Link
                   href={`/blog?searchTag=${tag}&page=${page}`}
                   key={`${page}_${index}`}
-                  id="1"
-                  type="button"
                   className={`flex h-10 w-10 items-center justify-center p-4 ${
                     currentPage + 1 === page ? "bg-green-500 rounded-full text-white" : "text-gray-600"
                   }`}
+                  aria-label={`${page}페이지로 이동`}
                   onClick={() => {
                     setCurrentPage(index);
                     console.log(index, currentPageGroup);

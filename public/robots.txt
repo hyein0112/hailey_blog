@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Disallow crawling of admin pages
-Disallow: /api/
+Disallow: /write
 
 # Sitemap location
 Sitemap: https://devhailey.com/sitemap.xml

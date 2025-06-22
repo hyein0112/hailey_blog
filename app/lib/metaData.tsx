@@ -11,16 +11,10 @@ interface MetadataProps {
 export const getMetadata = (metadataProps?: MetadataProps): Metadata => {
   const { title, description, asPath, ogImage } = metadataProps || {};
 
-  const TITLE = title ? `${title} | ${META.title}` : META.title;
-  const DESCRIPTION = description ? description.substring(0, 160) : META.description;
+  const TITLE = title ? `${title}` : META.title;
+  const DESCRIPTION = description || META.description;
   const PAGE_URL = asPath ? `${META.url}${asPath}` : META.url;
-
-  let OG_IMAGE: string = META.ogImage;
-  if (ogImage && ogImage.startsWith("http")) {
-    OG_IMAGE = ogImage;
-  } else if (ogImage && ogImage.startsWith("/")) {
-    OG_IMAGE = `${META.url}${ogImage}`;
-  }
+  const OG_IMAGE = ogImage || META.ogImage;
 
   const metadata: Metadata = {
     metadataBase: new URL(META.url),
@@ -33,9 +27,9 @@ export const getMetadata = (metadataProps?: MetadataProps): Metadata => {
     openGraph: {
       title: TITLE,
       description: DESCRIPTION,
-      siteName: META.siteName,
+      siteName: TITLE,
       locale: "ko_KR",
-      type: "article",
+      type: "website",
       url: PAGE_URL,
       images: [
         {
