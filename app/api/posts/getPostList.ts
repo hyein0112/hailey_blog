@@ -24,7 +24,14 @@ export async function getPostList(page: number, searchTag: string) {
       totalPage: Math.ceil(totalElement / pageSize),
       totalElement,
       searchTag,
-      data: items,
+      data: items.map((item) => ({
+        _id: item._id.toString(),
+        title: item.title,
+        content: item.content,
+        tag: item.tag,
+        thumbnail: item.thumbnail,
+        createdAt: item.createdAt,
+      })),
     };
 
     return NextResponse.json(response);

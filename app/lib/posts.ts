@@ -30,6 +30,7 @@ export async function getPostListData(page: number, searchTag: string): Promise<
         content: item.content,
         tag: item.tag,
         thumbnail: item.thumbnail,
+        createdAt: item.createdAt,
       })),
     };
   } catch (e) {
@@ -67,6 +68,7 @@ export async function getRecentPosts(): Promise<PostData[]> {
       content: post.content,
       tag: post.tag,
       thumbnail: post.thumbnail,
+      createdAt: post.createdAt,
     }));
   } catch (e) {
     console.error(e);
@@ -87,6 +89,7 @@ export async function getPostData(id: string): Promise<PostData> {
       content: item.content,
       tag: item.tag,
       thumbnail: item.thumbnail,
+      createdAt: item.createdAt,
     };
   } catch (e) {
     console.error(e);
