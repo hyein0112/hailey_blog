@@ -1,53 +1,11 @@
-import Image from "next/image";
 import Link from "next/link";
-import { FaGithub, FaEnvelope } from "react-icons/fa";
-import { SiReact, SiNextdotjs, SiTailwindcss, SiNodedotjs, SiMongodb, SiNestjs, SiMysql } from "react-icons/si";
 import { RecentPostCardBox } from "./components/RecentPostCard";
 import { getRecentPosts } from "@/lib/posts";
+import { techStack, socialLinks } from "./data";
 
 export default async function HomePage() {
   // 서버에서 최근 포스트 데이터 가져오기
   const recentPosts = await getRecentPosts();
-
-  type TechStackItem = {
-    name: string;
-    icon?: React.ElementType;
-    customIcon?: React.ReactNode;
-    color: string;
-  };
-
-  const frontendStack: TechStackItem[] = [
-    { name: "React", icon: SiReact, color: "text-blue-400" },
-    { name: "Next.js", icon: SiNextdotjs, color: "text-black" },
-    {
-      name: "React Native",
-      customIcon: <Image src="/tech-logos/react-native.svg" alt="React Native" width={28} height={28} className="object-contain" />,
-      color: "text-blue-500",
-    },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" },
-    {
-      name: "Emotion CSS",
-      customIcon: <Image src="/tech-logos/emotion.png" alt="Emotion CSS" width={28} height={28} className="object-contain" />,
-      color: "text-pink-500",
-    },
-    {
-      name: "Zustand",
-      customIcon: <Image src="/tech-logos/zustand.svg" alt="Zustand" width={28} height={28} className="object-contain" />,
-      color: "text-purple-500",
-    },
-  ];
-
-  const backendStack: TechStackItem[] = [
-    { name: "Node.js", icon: SiNodedotjs, color: "text-green-600" },
-    { name: "Nest.js", icon: SiNestjs, color: "text-red-500" },
-    { name: "MongoDB", icon: SiMongodb, color: "text-green-500" },
-    { name: "MySQL", icon: SiMysql, color: "text-blue-600" },
-  ];
-
-  const socialLinks = [
-    { name: "GitHub", icon: FaGithub, url: "https://github.com/hyein0112" },
-    { name: "Email", icon: FaEnvelope, url: "mailto:dev.hyein@icloud.com" },
-  ];
 
   return (
     <div className="flex h-full flex-col pb-10">
@@ -83,27 +41,9 @@ export default async function HomePage() {
         {/* 기술 스택 섹션 */}
         <section className="w-full max-w-[1200px] p-4 md:p-6">
           <h2 className="text-2xl mb-6">Tech Stack</h2>
-
-          {/* 프론트엔드 기술 스택 */}
           <div className="mb-8">
-            <h3 className="text-lg mb-4 text-gray-700">Frontend</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {frontendStack.map((tech) => (
-                <div key={tech.name} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                  <div className="flex items-center gap-3">
-                    {tech.customIcon ? tech.customIcon : tech.icon ? <tech.icon className={`text-[28px] ${tech.color}`} /> : null}
-                    <span className="font-medium">{tech.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 백엔드 기술 스택 */}
-          <div>
-            <h3 className="text-lg mb-4 text-gray-700">Backend</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {backendStack.map((tech) => (
+              {techStack.map((tech) => (
                 <div key={tech.name} className="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-3">
                     {tech.customIcon ? tech.customIcon : tech.icon ? <tech.icon className={`text-[28px] ${tech.color}`} /> : null}
@@ -136,7 +76,8 @@ export default async function HomePage() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-3xl hover:text-green-600 transition-colors">
+                className="text-3xl hover:text-green-600 transition-colors"
+                title={social.name}>
                 <social.icon />
               </a>
             ))}
