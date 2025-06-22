@@ -11,7 +11,7 @@ type PaginationProps = {
   currentPage: number;
 };
 
-const PaginationV2 = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: PaginationProps) => {
+const Pagination = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: PaginationProps) => {
   const [currentPageGroup, setCurrentPageGroup] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -113,4 +113,4 @@ const PaginationV2 = ({ totalPages, tag, pageIndex, currentPage: page = 1 }: Pag
   );
 };
 
-export default PaginationV2;
+export default Pagination;

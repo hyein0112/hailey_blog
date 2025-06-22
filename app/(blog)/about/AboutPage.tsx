@@ -3,7 +3,7 @@
 import { Divider } from "@/components";
 import Image from "next/image";
 import { IoLogoGithub, IoMdMail } from "react-icons/io";
-import { FaBook, FaBriefcase, FaProjectDiagram } from "react-icons/fa";
+import { FaBook, FaBriefcase, FaLinkedin, FaProjectDiagram } from "react-icons/fa";
 import ProjectCard from "./components/ProjectCard";
 import ProjectModal from "./components/ProjectModal";
 import { Project } from "./types";
@@ -32,6 +32,7 @@ export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <main className="flex-1 self-center p-4 md:p-6 w-full max-w-[1200px] flex flex-col gap-12">
+        {/* Profile */}
         <section className="mb-6">
           <div className="flex flex-col md:flex-row items-center justify-center mt-6 gap-6">
             <div className="flex flex-col items-center gap-4">
@@ -76,6 +77,13 @@ export default function AboutPage() {
                     <IoMdMail size={15} color="#f2f2f2" />
                   </div>
                   <span className="hidden md:inline-block text-sm">Email</span>
+                </a>
+                <a
+                  className="flex items-center gap-1 py-1 px-2 bg-background2 border border-solid border-background4 rounded-md button-hover"
+                  href="https://www.linkedin.com/in/hyein-baek-75497a32b"
+                  target="_blank">
+                  <FaLinkedin size={24} />
+                  <span className="hidden md:inline-block text-sm">LinkedIn</span>
                 </a>
               </div>
             </div>

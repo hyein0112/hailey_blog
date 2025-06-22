@@ -32,6 +32,20 @@ export default function PDFModal({ isOpen, onClose, url, title }: PDFModalProps)
     [],
   );
 
+  // 모달이 열릴 때 body 스크롤 방지
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    // 컴포넌트 언마운트 시 스크롤 복원
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     function updateWidth() {
       if (containerRef.current) {
