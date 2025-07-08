@@ -14,9 +14,9 @@ export default function Giscus() {
     scriptElem.crossOrigin = "anonymous";
 
     scriptElem.setAttribute("data-repo", "hyein0112/hailey_blog");
-    scriptElem.setAttribute("data-repo-id", process.env.NEXT_PUBLIC_GISCUS_REPO_ID || "");
+    scriptElem.setAttribute("data-repo-id", "R_kgDONjvJzQ");
     scriptElem.setAttribute("data-category", "Comments");
-    scriptElem.setAttribute("data-category-id", process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID || "");
+    scriptElem.setAttribute("data-category-id", "DIC_kwDONjvJzc4Cl5R0");
     scriptElem.setAttribute("data-mapping", "pathname");
     scriptElem.setAttribute("data-strict", "0");
     scriptElem.setAttribute("data-reactions-enabled", "1");
