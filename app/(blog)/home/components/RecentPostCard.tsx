@@ -21,7 +21,7 @@ export default function RecentPostCard({ _id, title, tag, thumbnail, createdAt }
             alt={`${title}의 썸네일`}
           />
         </div>
-        <span className="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-green-600 border border-green-100">
+        <span className="absolute top-3 right-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-green-600 shadow-md">
           {tag}
         </span>
       </div>

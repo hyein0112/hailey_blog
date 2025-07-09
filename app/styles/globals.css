@@ -59,6 +59,30 @@
   }
 }
 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  margin: 16px 0;
+  th,
+  td {
+    border: 2px solid #ddd;
+    padding: 8px;
+  }
+}
+main ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+main ol {
+  list-style: decimal;
+  padding-left: 20px;
+}
+
+main li {
+  list-style: disc;
+}
 .button-hover {
   &:hover {
     transform: scale(1.05);
