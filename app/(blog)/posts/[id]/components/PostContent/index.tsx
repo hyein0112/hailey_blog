@@ -35,7 +35,7 @@ export default function PostContent({ content }: { content: PostData }) {
   return (
     <div className="w-full p-4 flex flex-col mb-20">
       {/* Container */}
-      <h1>{content.title}</h1>
+      <h1 className="max-w-full text-2xl lg:text-3xl break-words whitespace-pre-line">{content.title}</h1>
       <div className="flex items-center gap-3 py-3 pb-5 text-sm">
         {/* TagAndDate */}
         <span className="text-green-600 font-semibold bg-gray-100 px-2 py-1 rounded-lg">{content.tag}</span>
