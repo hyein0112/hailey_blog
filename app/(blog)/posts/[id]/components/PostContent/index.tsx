@@ -1,8 +1,11 @@
+"use client";
+
 import { marked } from "marked";
 import { markedHighlight } from "marked-highlight";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import { PostData } from "@/types/post";
+import { useEffect, useRef } from "react";
 
 import { Divider } from "@/components";
 import dayjs from "@/lib/dayjs";
@@ -25,6 +28,23 @@ marked.use(
 );
 
 export default function PostContent({ content }: { content: PostData }) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const tables = contentRef.current.querySelectorAll("table");
+      tables.forEach((table) => {
+        // 이미 감싸져 있지 않은 경우에만 감쌈
+        if (!table.parentElement?.classList.contains("overflow-x-auto")) {
+          const wrapper = document.createElement("div");
+          wrapper.className = "overflow-x-auto";
+          table.parentElement?.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      });
+    }
+  }, []);
+
   if (!content?.content) {
     return <div>콘텐츠가 없습니다.</div>;
   }
@@ -42,7 +62,7 @@ export default function PostContent({ content }: { content: PostData }) {
         <span className="-mt-[3px] text-gray-700">{dayjs.tz(content.createdAt).format("YYYY년 MM월 DD일")}</span>
       </div>
       <Divider height="1px" margin="8px 0 24px 0" />
-      <div className="post-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div ref={contentRef} className="post-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </div>
   );
 }

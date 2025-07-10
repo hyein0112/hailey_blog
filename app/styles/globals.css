@@ -59,10 +59,12 @@
   }
 }
 
-table {
-  width: 100%;
+main table {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
-  border: 1px solid #ddd;
   margin: 16px 0;
   th,
   td {
