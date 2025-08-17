@@ -1,19 +1,43 @@
-import { Company } from '../types';
+import { Company } from "../types";
 
 export const companies: Company[] = [
   {
+    id: "company2",
+    name: "모난돌컴퍼니",
+    period: "2025.08 ~ 진행중",
+    position: "프론트엔드 개발자",
+    projects: [
+      {
+        id: "project1",
+        title: "럭키밀",
+        period: "2025.08 - 진행중",
+        shortDescription: "베이커리 50% 마감 할인 서비스",
+        description: "베이커리 50% 마감 할인 서비스",
+        mainTechStack: ["React", "Next.js", "TypeScript", "Zustand", "Tailwind CSS", "Tanstack Query"],
+        subTechStack: ["Capacitor"],
+        details: {
+          role: "프론트엔드",
+          achievements: ["No-Code 툴 Bubble 기반 프로젝트를 Next.js로 전환"],
+          screenshots: [
+            "https://oopy.lazyrockets.com/api/v2/notion/image?src=attachment%3Ac0d083ee-721e-4099-97ae-d31a68aba4ff%3ASlide_16_9_-_1.png&blockId=23bffa41-3387-81ab-923b-c347df30b918",
+          ],
+        },
+      },
+    ],
+  },
+  {
     id: "company1",
     name: "(주)키트웍스",
-    period: "2023.11 ~",
+    period: "2023.11 ~ 2025.07",
     position: "프론트엔드 개발자",
     projects: [
       {
         id: "project1",
         title: "스터디모아",
-        period: "2023.11 - 진행중",
+        period: "2023.11 - 2025.07",
         shortDescription: "스터디카페 중개 서비스",
         description: `스터디카페 중개 서비스`,
-        mainTechStack: ["React", "Next.js", "TypeScript", "Zustand", "Tailwind CSS", "Emotion", "React Query"],
+        mainTechStack: ["React", "Next.js", "TypeScript", "Zustand", "Tailwind CSS", "Emotion", "Tanstack Query"],
         subTechStack: ["React-Native", "Node.js", "Nest.js"],
         details: {
           role: "프론트엔드",
@@ -35,10 +59,9 @@ export const companies: Company[] = [
             "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/d7/1b/b7/d71bb75a-49da-d16c-439f-72d64e8ab5c7/c4853480-bd93-4f37-af76-156b35df2151_Screenshot_green_U00286.5_U0029_02-min.png/230x0w.webp",
             "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/27/cb/fe27cb21-1497-bcd2-8a73-9532e288a637/42eafca5-20a6-4988-a48a-ce3dcbce2170_Screenshot_green_U00286.5_U0029_03-min.png/230x0w.webp",
             "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/0c/2e/3c/0c2e3c86-64c4-ccef-0055-961ff1bc64e2/3b6d7987-6876-44ed-a294-80798b7474e4_Screenshot_green_U00286.5_U0029_04-min.png/230x0w.webpp",
-          ]
-        }
-      }
-    ]
+          ],
+        },
+      },
+    ],
   },
-  // ... 다른 회사 데이터
-]; 
+];
